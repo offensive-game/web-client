@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev:client": "webpack --mode development --config config/webpack.dev.client.config.js",
-    "run:dev:client": "webpack-dev-server --mode development --config config/webpack.dev.client.config.js --hot --history-api-fallback"
+    "build:client": "webpack --mode development --config config/webpack.dev.client.config.js",
+    "build:server": "BABEL_ENV=server webpack --mode development --config config/webpack.dev.server.config.js",
+    "start:client": "webpack-dev-server --mode development --config config/webpack.dev.client.config.js --hot --history-api-fallback",
+    "start:server": "BABEL_ENV=server nodemon --watch --src ./dist/server-bundle.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.0",
+    "babel-plugin-css-modules-transform": "^1.6.1",
     "css-loader": "^1.0.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -30,6 +33,7 @@
     "eslint-plugin-react": "^7.11.1",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.2",
+    "nodemon": "^1.18.4",
     "postcss": "^7.0.2",
     "postcss-import": "^12.0.0",
     "postcss-loader": "^3.0.0",
@@ -50,6 +54,7 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "serialize-javascript": "^1.5.0"
+    "serialize-javascript": "^1.5.0",
+    "webpack-node-externals": "^1.7.2"
   }
 }

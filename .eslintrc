@@ -8,6 +8,8 @@
   },
   "rules": {
     "comma-dangle": "off",
+    "arrow-body-style": ["error", "as-needed"],
+    "arrow-parens": "off",
 
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }

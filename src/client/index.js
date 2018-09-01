@@ -1,16 +1,15 @@
 // Vendor
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import React from 'react';
 import thunk from 'redux-thunk';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 
 // Internal
 import Application from './Application';
-import Home from './home/components/Home';
 import rootReducer from './reducer';
-import Signup from './signup/components/Signup';
+import routes from './routes';
 
 const store = createStore(
   rootReducer,
@@ -22,11 +21,12 @@ const wrapped = (
   <Provider store={store}>
     <BrowserRouter>
       <Application>
-        <Route exact path="/" component={Home} />
-        <Route path="/signup" component={Signup} />
+        {routes.map((route) => (
+          <Route {...route} />
+        ))}
       </Application>
     </BrowserRouter>
   </Provider>
 );
 
-render(wrapped, document.getElementById('app'));
+hydrate(wrapped, document.getElementById('app'));
