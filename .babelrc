@@ -3,16 +3,5 @@
     "@babel/env",
     "@babel/preset-react"
   ],
-  "env": {
-    "server": {
-      "plugins": [
-        [
-          "css-modules-transform", {
-            "generateScopedName": "[path][name]__[local]--[hash:base64:5]",
-            "extensions": [".css"]
-          }
-        ]
-      ]
-    }
-  }
+  "plugins": ["react-hot-loader/babel"]
 }

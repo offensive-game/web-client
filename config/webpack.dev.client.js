@@ -1,14 +1,19 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // eslint-disable-line
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // eslint-disable-line
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   name: 'client',
-  entry: './src/client/index.js',
+  entry: {
+    main:[
+      'webpack-hot-middleware/client',
+      './src/client/index.js'
+    ]
+  },
   mode: 'development',
   output: {
-    filename: 'client-bundle.js',
-    path: path.resolve(__dirname, '../public/bundles')
+    filename: 'client.bundle.js',
+    path: path.resolve(__dirname, '/')
   },
   devtool: 'source-map',
   module: {
@@ -44,6 +49,8 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css'
-    })
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
   ]
 };

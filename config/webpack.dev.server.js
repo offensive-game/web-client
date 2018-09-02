@@ -8,11 +8,12 @@ module.exports = {
   mode: 'development',
   target: 'node',
   node: {
-    __dirname: false,
+    __dirname: false
   },
   output: {
-    filename: 'server-bundle.js',
-    path: path.resolve(__dirname, '../dist')
+    filename: 'server.bundle.js',
+    path: path.resolve(__dirname, '../dist'),
+    libraryTarget: 'commonjs2'
   },
   devtool: 'source-map',
   module: {
@@ -21,7 +22,18 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          query: {
+            plugins: [
+              [
+                'css-modules-transform',
+                {
+                  generateScopedName: '[path][name]__[local]--[hash:base64:5]',
+                  extensions: ['.css']
+                }
+              ]
+            ]
+          }
         }
       },
       {
