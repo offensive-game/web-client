@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:prod:client": "webpack --mode production --config config/webpack.prod.client.js",
     "dev": "node ./src/development.js"
   },
   "repository": {
@@ -28,8 +29,9 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
+    "extract-css-chunks-webpack-plugin": "^3.1.1",
+    "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.4.2",
     "nodemon": "^1.18.4",
     "postcss": "^7.0.2",
     "postcss-import": "^12.0.0",
@@ -47,7 +49,9 @@
     "webpack-hot-server-middleware": "^0.5.0"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "express": "^4.16.3",
+    "lodash": "^4.17.10",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

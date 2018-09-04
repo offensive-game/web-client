@@ -1,3 +1,17 @@
-.demoClass {
-  color: blue;
+:global(body) {
+  background-color: black;
+}
+
+:global(#app) {
+  height: 100%;
+  min-height: 700px;
+  width: 100%;
+}
+
+.application {
+  background: url("../../public/images/background.jpg");
+  margin: 100px auto;
+  height: 720px;
+  max-width: 1280px;
+  width: 100%;
 }

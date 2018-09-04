@@ -1,11 +1,14 @@
+// Vendor
 import React from 'react';
-import styles from './styles.css';
 import { hot } from 'react-hot-loader';
 
-const Application = props => (
-  <div>
-    <h3 className={styles.demoClass}>Offensive Game</h3>
-    {props.children}
+// CSS
+import styles from './styles.css';
+
+const Application = ({ children }) => (
+  <div className={styles.application}>
+    <h3> Offensive Game</h3>
+    {children}
   </div>
 );
 

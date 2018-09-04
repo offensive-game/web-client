@@ -42,12 +42,21 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
+              locals: true,
               modules: true,
               localIdentName: '[path][name]__[local]--[hash:base64:5]',
               sourceMap: true
             }
           }
         ]
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+          context: ''
+        }
       }
     ]
   }

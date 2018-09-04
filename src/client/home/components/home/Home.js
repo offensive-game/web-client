@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
+// CSS
+import styles from './styles.css';
+
 class Home extends Component {
   static serverFetch() {
     return new Promise((resolve) => {
@@ -18,11 +21,11 @@ class Home extends Component {
         <Helmet>
           <title>Home</title>
         </Helmet>
-        <h2>Home</h2>
-        <Link to="/signup">Sign Up</Link>
+        <div className={styles.gameName} />
+        <Link to="signup" />
       </div>
     );
   }
-};
+}
 
 export default Home;
