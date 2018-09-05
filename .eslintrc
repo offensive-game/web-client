@@ -11,12 +11,14 @@
     "arrow-body-style": ["error", "as-needed"],
     "arrow-parens": "off",
     "no-console": "off",
+    "object-curly-newline": "off",
     "import/no-extraneous-dependencies": "off",
 
     "babel/no-invalid-this": 1,
 
     "react/prop-types": [2, { "ignore": ["children"] }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/button-has-type": "off",
 
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/click-events-have-key-events": "off"

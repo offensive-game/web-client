@@ -1,0 +1,22 @@
+.component {
+  width: 200px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: var(--color-silver);
+  border: 3px solid var(--color-jungle-green);
+  color: var(--color-jungle-green);
+  font-weight: 700;
+  transition: background-color .25s ease-out
+}
+
+.primary:hover {
+  background: var(--color-jungle-green);
+  color: var(--color-silver);
+}
+
+.secondary {
+  color: white;
+}
