@@ -1,0 +1,14 @@
+@import '../../../styles.css';
+
+.content {
+  padding: var(--size-20);
+}
+
+.gameName {
+  background: url("../../../../../public/images/name.png") no-repeat center;
+  height: 100px;
+}
+
+.hamburger {
+  margin: var(--size-8) auto;
+}

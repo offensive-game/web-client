@@ -1,5 +1,5 @@
 import Home from './home/components/home/Home';
-import Signup from './signup/components/Signup';
+import Signup from './signup/components/Signup/Signup';
 
 const routes = [
   {

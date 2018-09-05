@@ -1,5 +1,32 @@
+:root {
+  --size-4: 4px;
+  --size-8: 8px;
+  --size-12: 12px;
+  --size-16: 16px;
+  --size-20: 20px;
+  --size-24: 24px;
+  --size-28: 28px;
+  --size-32: 32px;
+  --size-36: 36px;
+  --size-40: 40px;
+  --size-44: 44px;
+  --size-48: 48px;
+  --size-52: 52px;
+
+  --color-black: rgba(0, 0, 0, 1);
+  --color-silver: rgba(202, 205, 201, 1);
+  --color-gunmetal: rgba(34, 51, 59, 1);
+  --color-sunglow: rgba(255, 210, 63, 1);
+  --color-rifle-green: rgba(63, 75, 59, 1);
+  --color-jungle-green: rgba(31, 63, 47, 1);
+
+  --color-silver-transparent: rgba(202, 205, 201, .3);
+}
+
 :global(body) {
   background-color: black;
+  color: var(--color-silver);
+  font-family: 'Roboto', sans-serif;
 }
 
 :global(#app) {

@@ -11,6 +11,7 @@ const htmlTemplate = (reactDom, reduxState) => {
             <title>Offensive Game</title>
             <link rel="stylesheet" type="text/css" href="/main.css">
             <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+            <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
             ${helmet.title}
             ${helmet.meta}
             ${helmet.link}

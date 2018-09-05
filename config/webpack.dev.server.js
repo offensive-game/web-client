@@ -31,7 +31,8 @@ module.exports = {
                   generateScopedName: '[path][name]__[local]--[hash:base64:5]',
                   extensions: ['.css']
                 }
-              ]
+              ],
+              ['transform-class-properties', { spec: true }]
             ]
           }
         }
