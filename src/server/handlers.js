@@ -1,16 +1,24 @@
+// Vendor
+import Cookies from 'cookies';
 import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { Provider } from 'react-redux';
-import { matchPath, Route, StaticRouter } from 'react-router-dom';
-import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
+import { applyMiddleware, createStore } from 'redux';
+import { createCookieMiddleware } from 'redux-cookie';
+import { matchPath, Route, StaticRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { renderToString } from 'react-dom/server';
+
+// Internal
 import Application from '../client/Application';
-import rootReducer from '../client/reducer';
+import rootReducer from '../client/reducer/reducer';
 import routes from '../client/routes';
 import template from './helpers/template';
+import { loadCookies } from '../client/actions/cookies';
 
 const ssrHandler = (req, res) => {
-  const store = createStore(rootReducer, applyMiddleware(thunk));
+  const cookies = new Cookies(req, res);
+  const store = createStore(rootReducer, applyMiddleware(thunk, createCookieMiddleware(cookies)));
+  store.dispatch(loadCookies(req.cookies));
   const context = {};
 
   const dataRequirements = routes

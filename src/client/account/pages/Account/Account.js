@@ -3,14 +3,14 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 // Internal
-import CreateAccount from '../CreateAccount/Container';
+import CreateAccount from '../../components/Signup/Container';
 import Hamburger from '../../../common/Hamburger/Hamburger';
-import Login from '../Login/Container';
+import Login from '../../components/Login/Container';
 
 // CSS
 import styles from './styles.css';
 
-const Signup = () => (
+const Account = () => (
   <div>
     <Helmet>
       <title>Sign Up</title>
@@ -30,4 +30,4 @@ const Signup = () => (
   </div>
 );
 
-export default Signup;
+export default Account;

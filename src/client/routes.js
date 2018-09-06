@@ -1,5 +1,5 @@
 import Home from './home/components/home/Home';
-import Signup from './signup/components/Signup/Signup';
+import Account from './account/pages/Account/Account';
 
 const routes = [
   {
@@ -9,8 +9,8 @@ const routes = [
     key: 'home'
   },
   {
-    path: '/signup',
-    component: Signup,
+    path: '/account',
+    component: Account,
     exact: true,
     key: 'signup'
   }

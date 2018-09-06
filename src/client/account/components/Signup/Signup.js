@@ -7,7 +7,7 @@ import Button from '../../../common/Button/Button';
 // CSS
 import styles from './styles.css';
 
-class CreateAccount extends Component {
+class Signup extends Component {
   state = {
     username: '',
     password: '',
@@ -40,13 +40,13 @@ class CreateAccount extends Component {
         <div className={styles.wrapper}>
           <div className={styles.label}>Username:</div>
           <div className={styles.input}>
-            <input type="text" value={username} onChange={this.inputChange} name="username"/>
+            <input type="text" value={username} onChange={this.inputChange} name="username" />
           </div>
         </div>
         <div className={styles.wrapper}>
           <div className={styles.label}>Password:</div>
           <div className={styles.input}>
-            <input type="password" value={password} onChange={this.inputChange} name="password"/>
+            <input type="password" value={password} onChange={this.inputChange} name="password" />
           </div>
         </div>
         <div className={styles.signupButton}>
@@ -57,12 +57,12 @@ class CreateAccount extends Component {
   }
 }
 
-CreateAccount.defaultProps = {
+Signup.defaultProps = {
   signup: () => {}
 };
 
-CreateAccount.propTypes = {
+Signup.propTypes = {
   signup: PropTypes.func
 };
 
-export default CreateAccount;
+export default Signup;

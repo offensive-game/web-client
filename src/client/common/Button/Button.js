@@ -23,14 +23,15 @@ const Button = (props) => {
 Button.defaultProps = {
   className: '',
   type: 'button',
-  mode: 'primary'
+  mode: 'primary',
+  onClick: null
 };
 
 Button.propTypes = {
   className: PropTypes.string,
   text: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['submit', 'button', 'reset']),
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   mode: PropTypes.oneOf(['primary', 'secondary'])
 };
 

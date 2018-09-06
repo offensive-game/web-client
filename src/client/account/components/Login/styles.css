@@ -19,6 +19,11 @@
   margin: var(--size-12) 0;
 }
 
+.error {
+  border: 1px solid red;
+  color: red;
+}
+
 .loginButton {
   margin-top: var(--size-44);
   display: flex;

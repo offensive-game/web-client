@@ -1,20 +1,25 @@
 // Vendor
-import { BrowserRouter, Route } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import React from 'react';
 import thunk from 'redux-thunk';
-import { applyMiddleware, createStore } from 'redux';
-import { Provider } from 'react-redux';
+import { applyMiddleware, createStore, compose } from 'redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { createCookieMiddleware } from 'redux-cookie';
 import { hydrate } from 'react-dom';
+import { Provider } from 'react-redux';
 
 // Internal
 import Application from './Application';
-import rootReducer from './reducer';
+import rootReducer from './reducer/reducer';
 import routes from './routes';
 
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), // eslint-disable-line
-  applyMiddleware(thunk)
+  window.REDUX_DATA,
+  compose(
+    applyMiddleware(thunk, createCookieMiddleware(Cookies)),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), // eslint-disable-line
+  )
 );
 
 const wrapped = (
@@ -35,8 +40,8 @@ if (module.hot) {
 
 if (module.hot) {
   // Enable Webpack hot module replacement for reducers
-  module.hot.accept('./reducer', () => {
-    const nextRootReducer = require('./reducer');
+  module.hot.accept('./reducer/reducer', () => {
+    const nextRootReducer = require('./reducer/reducer');
     store.replaceReducer(nextRootReducer);
   });
 }

@@ -53,7 +53,10 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "cookie-parser": "^1.4.3",
+    "cookies": "^0.7.1",
     "express": "^4.16.3",
+    "js-cookie": "^2.2.0",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
@@ -62,7 +65,9 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
+    "redux-cookie": "^0.5.9",
     "redux-thunk": "^2.3.0",
+    "reselect": "^3.0.1",
     "serialize-javascript": "^1.5.0",
     "webpack-node-externals": "^1.7.2"
   }
