@@ -22,7 +22,6 @@ class Signup extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    console.log('SUbmitting');
   };
 
   render() {

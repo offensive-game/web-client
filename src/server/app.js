@@ -43,7 +43,6 @@ const ssrHandler = () => (req, res) => {
     const reactDom = renderToString(wrapped);
 
     if (context.url) {
-      console.log('context ----->', context.url);
       res.redirect(context.url);
     } else {
       res.writeHead(200, { 'Content-Type': 'text/html' });

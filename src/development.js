@@ -1,21 +1,31 @@
 // Vendor
+const cookieParser = require('cookie-parser');
 const express = require('express');
+const fs = require('fs');
+const https = require('https');
 const path = require('path');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
-const cookieParser = require('cookie-parser');
 
 // Internal
 const serverWPConfig = require('../config/webpack.dev.server');
 const clientWPConfig = require('../config/webpack.dev.client');
 
-const compiler = webpack([clientWPConfig, serverWPConfig]);
+const options = {
+  key: fs.readFileSync('./offensive.local.key'),
+  cert: fs.readFileSync('./offensive.local.cert'),
+  requestCert: false,
+  rejectUnauthorized: false
+};
 
+const compiler = webpack([clientWPConfig, serverWPConfig]);
 const app = express();
+
+const server = https.createServer(options, app);
+
 app.use(cookieParser());
-app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(
   webpackDevMiddleware(compiler, {
     publicPath: '/',
@@ -25,4 +35,6 @@ app.use(
 app.use(webpackHotMiddleware(compiler.compilers.find((c) => c.name === 'client')));
 app.use(webpackHotServerMiddleware(compiler));
 
-app.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 443, () => {
+  console.log('Server listening on port', server.address().port);
+});
