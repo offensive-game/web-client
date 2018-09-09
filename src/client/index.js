@@ -1,5 +1,6 @@
 // Vendor
 import Cookies from 'js-cookie';
+import Modal from 'react-modal';
 import React from 'react';
 import thunk from 'redux-thunk';
 import { applyMiddleware, createStore, compose } from 'redux';
@@ -47,4 +48,5 @@ if (module.hot) {
   });
 }
 
+Modal.setAppElement('#app');
 hydrate(wrapped, document.getElementById('app'));

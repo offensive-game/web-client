@@ -21,6 +21,9 @@
   --color-jungle-green: rgba(31, 63, 47, 1);
 
   --color-silver-transparent: rgba(202, 205, 201, .3);
+  --color-black-transparent: rgba(0, 0, 0, .3);
+
+  --font-weight-bold: 600;
 }
 
 :global(body) {

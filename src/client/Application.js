@@ -7,7 +7,6 @@ import styles from './styles.css';
 
 const Application = ({ children }) => (
   <div className={styles.application}>
-    <h3> Offensive Game</h3>
     {children}
   </div>
 );

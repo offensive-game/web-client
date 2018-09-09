@@ -21,6 +21,7 @@
     "react/prop-types": [2, { "ignore": ["children"] }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/button-has-type": "off",
+    "react/forbid-prop-types": [1, { "forbid": ["any"], "checkContextTypes": true, "checkChildContextTypes": true }],
 
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/click-events-have-key-events": "off"

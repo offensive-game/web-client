@@ -1,0 +1,83 @@
+@import '../../styles.css';
+
+.component {
+  background-color: var(--color-gunmetal);
+  border: 2px solid var(--color-silver);
+  position: absolute;
+}
+
+.header {
+  border-bottom: 2px solid var(--color-silver);
+  height: var(--size-36);
+  line-height: var(--size-36);
+}
+
+.title {
+  font-weight: var(--font-weight-bold);
+  left: 0;
+  position: absolute;
+  right: var(--size-20);
+  text-align: center;
+}
+
+.close {
+  background: none;
+  border: none;
+  color: var(--color-silver);
+  cursor: pointer;
+  font-size: var(--size-24);
+  line-height: var(--size-36);
+  position: absolute;
+  right: 0;
+  width: var(--size-24);
+}
+
+.close:hover {
+  font-weight: var(--font-weight-bold);
+}
+
+.overlay {
+  background-color: var(--color-black-transparent);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 160px;
+}
+
+.small {
+  height: 200px;
+  width: 400px;
+}
+
+.medium {
+  height: 600px;
+  width: 900px;
+}
+
+.large {
+  height: 700px;
+  width: 1100px;
+}
+
+.content {
+  background-color: var(--color-silver-transparent);
+  bottom: var(--size-36);
+  position: absolute;
+  top: var(--size-36);
+  width: 100%;
+}
+
+.actions {
+  align-items: center;
+  background-color: var(--color-silver-transparent);
+  border-top: 1px solid var(--color-silver);
+  bottom: 0;
+  display: flex;
+  height: var(--size-36);
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+}

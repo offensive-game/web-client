@@ -1,12 +1,17 @@
 // Vendor
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { get } from 'lodash';
+import { compact, get } from 'lodash';
+import { Redirect } from 'react-router-dom';
 
 // Internal
 import Button from '../../../common/Button/Button';
+import InvalidCredentials from '../../../modal/components/InvalidCredentials/InvalidCredentials';
+import Modal from '../../../modal/components/Container';
 import { validatePassword, validateUsername } from '../../helpers/validation';
+
+// Constants
+import { INVALID_CREDENTIALS } from '../../../modal/constants';
 
 // CSS
 import styles from './styles.css';
@@ -14,103 +19,84 @@ import styles from './styles.css';
 class Login extends Component {
   state = {
     username: '',
-    password: '',
-    usernameError: null,
-    passwordError: null
+    password: ''
   };
-
-  static getDerivedStateFromProps(props, state) {
-    const { error } = props;
-    if (error) {
-      return {
-        ...state,
-        usernameError: error,
-        username: '',
-        password: ''
-      };
-    }
-
-    return state;
-  }
 
   inputChange = (event) => {
     const name = get(event, 'target.name', '');
     const value = get(event, 'target.value', '');
 
-    this.clearErrors();
     this.setState({ [name]: value });
+  };
+
+  componentDidUpdate = (prevProps) => {
+    const { error, showErrorsModal } = this.props;
+
+    const previousError = prevProps.error && prevProps.error.length;
+    const currentError = error && error.length;
+
+    if (!previousError && currentError) {
+      showErrorsModal(error);
+    }
   };
 
   onSubmit = (event) => {
     event.preventDefault();
 
     const { username, password } = this.state;
+    const { showErrorsModal } = this.props;
     const { login } = this.props;
 
-    const usernameError = validateUsername(username);
-    const passwordError = validatePassword(password);
+    const errors = compact([validateUsername(username), validatePassword(password)]);
 
-    if (usernameError || passwordError) {
-      this.setErrors(usernameError, passwordError);
+    if (errors.length) {
+      showErrorsModal(errors);
       return;
     }
 
     login(username, password);
   };
 
-  setErrors = (usernameError, passwordError) => {
-    this.setState({ usernameError, passwordError });
-  };
-
-  clearErrors = () => {
-    const { clearError } = this.props;
-    this.setState({ usernameError: null, passwordError: null });
-    clearError();
-  };
-
   render() {
-    const { username, password, usernameError, passwordError } = this.state;
+    const { username, password } = this.state;
+    const { loggedIn } = this.props;
 
-    const usernameValue = usernameError || username;
-    const passwordValue = password;
-
-    const usernameClass = classnames({
-      [styles.error]: !!usernameError
-    });
-    const passwordClass = classnames({
-      [styles.error]: !!passwordError
-    });
+    if (loggedIn) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <form className={styles.component} onSubmit={this.onSubmit}>
         <div className={styles.wrapper}>
           <div className={styles.label}>Username:</div>
           <div className={styles.input}>
-            <input className={usernameClass} type="text" value={usernameValue} onChange={this.inputChange} name="username" />
+            <input type="text" value={username} onChange={this.inputChange} name="username" />
           </div>
         </div>
         <div className={styles.wrapper}>
           <div className={styles.label}>Password:</div>
           <div className={styles.input}>
-            <input className={passwordClass} type="password" value={passwordValue} onChange={this.inputChange} name="password" />
+            <input type="password" value={password} onChange={this.inputChange} name="password" />
           </div>
         </div>
         <div className={styles.loginButton}>
           <Button text="Log In" type="submit" />
         </div>
+        <Modal component={InvalidCredentials} name={INVALID_CREDENTIALS} />
       </form>
     );
   }
 }
 
 Login.defaultProps = {
-  error: null
+  error: []
 };
 
 Login.propTypes = {
+  error: PropTypes.string,
   login: PropTypes.func.isRequired,
-  clearError: PropTypes.func.isRequired,
-  error: PropTypes.string
+  loggedIn: PropTypes.bool.isRequired,
+  showErrorsModal: PropTypes.func.isRequired
 };
 
 export default Login;
