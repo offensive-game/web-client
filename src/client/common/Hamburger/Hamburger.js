@@ -17,12 +17,14 @@ class Hamburger extends Component {
   };
 
   render() {
-    const { className, children, title } = this.props;
+    const { className, children, large, title } = this.props;
     const { opened } = this.state;
 
     const classes = classnames(styles.component, className);
     const expandingClasses = classnames(styles.expanding, {
-      [styles.opened]: opened
+      [styles.opened]: opened,
+      [styles.small]: opened && !large,
+      [styles.large]: opened && large
     });
     const titleClasses = classnames(styles.title, {
       [styles.titleBorder]: opened
@@ -40,11 +42,13 @@ class Hamburger extends Component {
 }
 
 Hamburger.defaultProps = {
-  className: null
+  className: null,
+  large: false
 };
 
 Hamburger.propTypes = {
   className: PropTypes.string,
+  large: PropTypes.bool,
   title: PropTypes.string.isRequired
 };
 

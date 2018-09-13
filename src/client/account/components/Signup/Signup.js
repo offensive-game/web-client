@@ -21,7 +21,7 @@ class Signup extends Component {
     this.setState({ [name]: value });
   };
 
-  componentDidUpdate = (prevProps) => {
+  componentDidUpdate(prevProps) {
     const { error, showErrorsModal } = this.props;
 
     const previousError = prevProps.error && prevProps.error.length;

@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 
 // Internal
 import Hamburger from '../../../common/Hamburger/Hamburger';
+import JoinGame from '../../components/JoinGame/Container';
 import NewGame from '../../components/NewGame/Container';
 
 // CSS
@@ -28,6 +29,10 @@ class Home extends Component {
         <div className={styles.content}>
           <Hamburger className={styles.hamburger} title="New Game">
             <NewGame />
+          </Hamburger>
+
+          <Hamburger className={styles.hamburger} title="Join Game" large>
+            <JoinGame />
           </Hamburger>
         </div>
       </div>

@@ -3,7 +3,9 @@ import { combineReducers } from 'redux';
 
 // Internal
 import newGameReducer from './newGame';
+import joinGameReducer from './joinGame';
 
 export default combineReducers({
-  newGame: newGameReducer
+  newGame: newGameReducer,
+  joinGame: joinGameReducer
 });

@@ -1,0 +1,18 @@
+.component {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: var(--size-28);
+}
+
+.value {
+  color: var(--color-sunglow);
+}
+
+.countdown {
+  color: var(--color-silver);
+}
+
+.selected {
+  border: 1px solid var(--color-sunglow);
+}
