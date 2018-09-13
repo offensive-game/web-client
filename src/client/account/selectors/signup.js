@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { get } from 'lodash';
 
 // Internal
-import { selectAccount } from '../../../selectors/account';
+import { selectAccount } from '.';
 
 const selectSignup = createSelector(selectAccount, (account) => get(account, 'signup', {}));
 

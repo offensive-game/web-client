@@ -4,8 +4,8 @@ import { CREATE_GAME_ERROR } from '../../../modal/constants';
 
 // Internal
 import NewGame from './NewGame';
-import { createGame } from './actions';
-import { selectNewGameData, selectNewGameInProgress, selectNewGameSuccess } from './selectors';
+import { createGame } from '../../actions/newGame';
+import { selectNewGameData, selectNewGameInProgress, selectNewGameSuccess } from '../../selectors/newGame';
 import { showModal } from '../../../modal/actions';
 
 const mapStateToProps = (state) => ({

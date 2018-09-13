@@ -2,7 +2,7 @@
 import { combineReducers } from 'redux';
 
 // Internal
-import newGameReducer from '../components/NewGame/reducers';
+import newGameReducer from './newGame';
 
 export default combineReducers({
   newGame: newGameReducer

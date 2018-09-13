@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 // Internal
 import Signup from './Signup';
-import { selectSignupError } from './selectors/signup';
+import { selectSignupError } from '../../selectors/signup';
 import { showModal } from '../../../modal/actions';
-import { signupAction, signupClearError } from './actions/signup';
+import { signupAction, signupClearError } from '../../actions/signup';
 
 // Constants
 import { INVALID_CREDENTIALS } from '../../../modal/constants';

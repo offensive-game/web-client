@@ -4,8 +4,8 @@ import { showModal } from '../../../modal/actions';
 
 // Internal
 import Login from './Login';
-import { loginAction, loginClearError } from './actions/login';
-import { selectLoginError, selectLoginSuccess } from './selectors/login';
+import { loginAction, loginClearError } from '../../actions/login';
+import { selectLoginError, selectLoginSuccess } from '../../selectors/login';
 import { INVALID_CREDENTIALS } from '../../../modal/constants';
 
 const mapStateToProps = (state) => ({

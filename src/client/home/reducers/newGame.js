@@ -3,7 +3,7 @@ import {
   CREATE_GAME_RESET,
   CREATE_GAME_STARTED,
   CREATE_GAME_SUCCESS
-} from '../actions';
+} from '../actions/newGame';
 
 const initialState = {
   inProgress: false,

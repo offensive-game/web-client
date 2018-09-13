@@ -2,7 +2,7 @@
 import { combineReducers } from 'redux';
 
 // Internal
-import accountReducer from '../account/reducers/account';
+import accountReducer from '../account/reducers';
 import cookiesReducer from './cookies';
 import gameManagementReducer from '../home/reducers';
 import modalReducer from '../modal/reducers';
