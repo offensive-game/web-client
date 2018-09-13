@@ -2,3 +2,11 @@
   background: url("../../../../../public/images/name.png") no-repeat center;
   height: 100px;
 }
+
+.content {
+  padding: var(--size-20);
+}
+
+.hamburger {
+  margin: var(--size-8) auto;
+}

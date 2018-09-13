@@ -2,14 +2,16 @@
 import { combineReducers } from 'redux';
 
 // Internal
-import cookiesReducer from './cookies';
 import accountReducer from '../account/reducers/account';
-import modalReducer from '../modal/reducer';
+import cookiesReducer from './cookies';
+import gameManagementReducer from '../home/reducers';
+import modalReducer from '../modal/reducers';
 
 
 const rootReducer = combineReducers({
   account: accountReducer,
   cookies: cookiesReducer,
+  gameManagement: gameManagementReducer,
   modal: modalReducer
 });
 

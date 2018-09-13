@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 // Internal
 import Button from '../../../common/Button/Button';
-import InvalidCredentials from '../../../modal/components/InvalidCredentials/InvalidCredentials';
+import ErrorPopup from '../../../modal/components/ErrorPopup/ErrorPopup';
 import Modal from '../../../modal/components/Container';
 import { validatePassword, validateUsername } from '../../helpers/validation';
 
@@ -82,7 +82,7 @@ class Login extends Component {
         <div className={styles.loginButton}>
           <Button text="Log In" type="submit" />
         </div>
-        <Modal component={InvalidCredentials} name={INVALID_CREDENTIALS} />
+        <Modal component={ErrorPopup} name={INVALID_CREDENTIALS} />
       </form>
     );
   }

@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const InvalidCredentials = (props) => {
+const ErrorPopup = (props) => {
   const { errors } = props;
 
   return (
@@ -14,9 +14,8 @@ const InvalidCredentials = (props) => {
   );
 };
 
-InvalidCredentials.propTypes = {
-  // close: PropTypes.func.isRequired,
+ErrorPopup.propTypes = {
   errors: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-export default InvalidCredentials;
+export default ErrorPopup;

@@ -1,7 +1,10 @@
 // Vendor
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+
+// Internal
+import Hamburger from '../../../common/Hamburger/Hamburger';
+import NewGame from '../../components/NewGame/Container';
 
 // CSS
 import styles from './styles.css';
@@ -22,7 +25,11 @@ class Home extends Component {
           <title>Home</title>
         </Helmet>
         <div className={styles.gameName} />
-        <Link to="signup" />
+        <div className={styles.content}>
+          <Hamburger className={styles.hamburger} title="New Game">
+            <NewGame />
+          </Hamburger>
+        </div>
       </div>
     );
   }
