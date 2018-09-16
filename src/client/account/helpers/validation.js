@@ -1,6 +1,6 @@
 const MIN_PASSWORD_LENGTH = 5;
 const MIN_USERNAME_LENGTH = 3;
-const EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/;
+const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // eslint-disable-line
 
 const validateEmail = (email) => {
   if (!email) {

@@ -23,16 +23,19 @@ const signupClearError = (payload = {}) => ({
   payload
 });
 
-const signupAction = (username, password, email) => (dispatch) => {
+const signupAction = (username, password, email) => (dispatch, getState, api) => {
   dispatch(signupStarted());
 
-  setTimeout(() => {
-    if (username && password && email) {
+  api
+    .post('/signup', { username, password, email })
+    .then((response) => {
+      console.log(response);
       dispatch(signupSuccess());
-    } else {
+    })
+    .catch((error) => {
+      console.log(error);
       dispatch(signupFailed({ error: 'email taken' }));
-    }
-  }, 1000);
+    });
 };
 
 export { signupAction, signupClearError };

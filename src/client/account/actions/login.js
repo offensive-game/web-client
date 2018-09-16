@@ -33,16 +33,9 @@ const loginAction = (username, password) => (dispatch, getState, server) => {
       console.log('login respose', aaaa);
       dispatch(loginSuccess({ user: { name: 'adada ' } }));
     }
-  );
-
-  // setTimeout(() => {
-  //   if (username && password) {
-  //     dispatch(setCookie('offensive-login', 'tokennnnn'));
-  //     dispatch(loginSuccess({ user: { name: 'adada ' } }));
-  //   } else {
-  //     dispatch(loginFailed({ error: 'wrong credentials' }));
-  //   }
-  // }, 1000);
+  ).catch((error) => {
+    console.log(error);
+  });
 };
 
 export { loginAction, loginClearError };
