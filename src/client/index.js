@@ -1,4 +1,5 @@
 // Vendor
+import 'regenerator-runtime/runtime';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Modal from 'react-modal';

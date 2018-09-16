@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { compact, get } from 'lodash';
 import Button from '../../../common/Button/Button';
+import Modal from '../../../modal/components/Container';
+import ErrorPopup from '../../../modal/components/ErrorPopup/ErrorPopup';
+import InfoPopup from '../../../modal/components/InfoPopup/InfoPopup';
+import { INVALID_SIGNUP_DATA, SIGNUP_SUCCESS } from '../../../modal/constants';
 import { validateEmail, validatePassword, validateUsername } from '../../helpers/validation';
 
 // CSS
@@ -15,21 +19,25 @@ class Signup extends Component {
     email: ''
   };
 
+  componentDidUpdate(prevProps) {
+    const { error, showErrorsModal, showSuccessModal, success } = this.props;
+
+    const successModal = !prevProps.success && success;
+    const errorModal = !prevProps.error && error;
+
+    if (errorModal) {
+      showErrorsModal([error]);
+    }
+
+    if (successModal) {
+      showSuccessModal();
+    }
+  }
+
   inputChange = (event) => {
     const name = get(event, 'target.name', '');
     const value = get(event, 'target.value', '');
     this.setState({ [name]: value });
-  };
-
-  componentDidUpdate(prevProps) {
-    const { error, showErrorsModal } = this.props;
-
-    const previousError = prevProps.error && prevProps.error.length;
-    const currentError = error && error.length;
-
-    if (!previousError && currentError) {
-      showErrorsModal(error);
-    }
   };
 
   onSubmit = (event) => {
@@ -51,6 +59,7 @@ class Signup extends Component {
 
   render() {
     const { username, password, email } = this.state;
+    const { clearSignupStatus } = this.props;
 
     return (
       <form className={styles.component} onSubmit={this.onSubmit}>
@@ -75,6 +84,9 @@ class Signup extends Component {
         <div className={styles.signupButton}>
           <Button text="Sign Up" type="submit" />
         </div>
+
+        <Modal component={ErrorPopup} name={INVALID_SIGNUP_DATA} closeAction={clearSignupStatus} />
+        <Modal component={InfoPopup} name={SIGNUP_SUCCESS} closeAction={clearSignupStatus} />
       </form>
     );
   }
@@ -85,9 +97,12 @@ Signup.defaultProps = {
 };
 
 Signup.propTypes = {
-  signup: PropTypes.func.isRequired,
+  clearSignupStatus: PropTypes.func.isRequired,
   error: PropTypes.string,
-  showErrorsModal: PropTypes.func.isRequired
+  showErrorsModal: PropTypes.func.isRequired,
+  showSuccessModal: PropTypes.func.isRequired,
+  signup: PropTypes.func.isRequired,
+  success: PropTypes.bool.isRequired
 };
 
 export default Signup;

@@ -1,5 +1,5 @@
 import {
-  SIGNUP_CLEAR_ERROR,
+  SIGNUP_CLEAR_STATUS,
   SIGNUP_FAILED,
   SIGNUP_STARTED,
   SIGNUP_SUCCESS
@@ -37,11 +37,8 @@ const reducer = (state = initialState, action) => {
         error: null
       };
     }
-    case SIGNUP_CLEAR_ERROR: {
-      return {
-        ...state,
-        error: null
-      };
+    case SIGNUP_CLEAR_STATUS: {
+      return initialState;
     }
     default: {
       return state;

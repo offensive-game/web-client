@@ -16,6 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   close() {
+    if (ownProps.closeAction) ownProps.closeAction();
     dispatch(hideModal(ownProps.name));
   }
 });

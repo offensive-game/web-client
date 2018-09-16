@@ -1,7 +1,10 @@
-export const SIGNUP_STARTED = 'LOGIN_STARTED';
-export const SIGNUP_FAILED = 'LOGIN_FAILED';
-export const SIGNUP_SUCCESS = 'LOGIN_SUCCESS';
-export const SIGNUP_CLEAR_ERROR = 'LOGIN_CLEAR_ERROR';
+// Vendor
+import { get } from 'lodash';
+
+export const SIGNUP_STARTED = 'SIGNUP_STARTED';
+export const SIGNUP_FAILED = 'SIGNUP_FAILED';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_CLEAR_STATUS = 'SIGNUP_CLEAR_STATUS';
 
 const signupStarted = (payload = {}) => ({
   type: SIGNUP_STARTED,
@@ -18,24 +21,21 @@ const signupFailed = (payload = {}) => ({
   payload
 });
 
-const signupClearError = (payload = {}) => ({
-  type: SIGNUP_CLEAR_ERROR,
+const signupClearStatus = (payload = {}) => ({
+  type: SIGNUP_CLEAR_STATUS,
   payload
 });
 
-const signupAction = (username, password, email) => (dispatch, getState, api) => {
+const signupAction = (username, password, email) => async (dispatch, getState, api) => {
   dispatch(signupStarted());
 
-  api
-    .post('/signup', { username, password, email })
-    .then((response) => {
-      console.log(response);
-      dispatch(signupSuccess());
-    })
-    .catch((error) => {
-      console.log(error);
-      dispatch(signupFailed({ error: 'email taken' }));
-    });
+  try {
+    await api.post('/signup', { username, password, email });
+    dispatch(signupSuccess());
+  } catch (error) {
+    const errorMessage = get(error, 'response.data.errors', 'Signup Error');
+    dispatch(signupFailed({ error: errorMessage }));
+  }
 };
 
-export { signupAction, signupClearError };
+export { signupAction, signupClearStatus };
