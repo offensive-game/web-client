@@ -1,4 +1,5 @@
 // Vendor
+import axios from 'axios';
 import Cookies from 'cookies';
 import React from 'react';
 import thunk from 'redux-thunk';
@@ -18,7 +19,13 @@ import { loadCookies } from '../client/actions/cookies';
 
 const ssrHandler = () => (req, res) => {
   const cookies = new Cookies(req, res);
-  const store = createStore(rootReducer, applyMiddleware(thunk, createCookieMiddleware(cookies)));
+  const axiosInstance = axios.create({
+    baseURL: 'https://offensive.local/demo'
+  });
+  const store = createStore(
+    rootReducer,
+    applyMiddleware(thunk.withExtraArgument(axiosInstance), createCookieMiddleware(cookies))
+  );
   store.dispatch(loadCookies(req.cookies));
   const context = {};
 

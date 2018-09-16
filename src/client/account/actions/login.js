@@ -25,17 +25,24 @@ const loginClearError = (payload = {}) => ({
   payload
 });
 
-const loginAction = (username, password) => (dispatch) => {
+const loginAction = (username, password) => (dispatch, getState, server) => {
   dispatch(loginStarted());
 
-  setTimeout(() => {
-    if (username && password) {
-      dispatch(setCookie('offensive-login', 'tokennnnn'));
+  server.post('login', { username, password }).then(
+    (aaaa) => {
+      console.log('login respose', aaaa);
       dispatch(loginSuccess({ user: { name: 'adada ' } }));
-    } else {
-      dispatch(loginFailed({ error: 'wrong credentials' }));
     }
-  }, 1000);
+  );
+
+  // setTimeout(() => {
+  //   if (username && password) {
+  //     dispatch(setCookie('offensive-login', 'tokennnnn'));
+  //     dispatch(loginSuccess({ user: { name: 'adada ' } }));
+  //   } else {
+  //     dispatch(loginFailed({ error: 'wrong credentials' }));
+  //   }
+  // }, 1000);
 };
 
 export { loginAction, loginClearError };

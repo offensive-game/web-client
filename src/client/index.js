@@ -1,4 +1,5 @@
 // Vendor
+import axios from 'axios';
 import Cookies from 'js-cookie';
 import Modal from 'react-modal';
 import React from 'react';
@@ -15,11 +16,13 @@ import ProtectedRoute from './routes/ProtectedRoute/Container';
 import rootReducer from './reducer/reducer';
 import routes from './routes/routes';
 
+const axiosInstance = axios.create({ baseURL: 'https://offensive.local/demo' });
+
 const store = createStore(
   rootReducer,
   window.REDUX_DATA,
   compose(
-    applyMiddleware(thunk, createCookieMiddleware(Cookies)),
+    applyMiddleware(thunk.withExtraArgument(axiosInstance), createCookieMiddleware(Cookies)),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // eslint-disable-line
   )
 );
