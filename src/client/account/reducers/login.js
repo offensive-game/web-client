@@ -1,4 +1,4 @@
-import { LOGIN_CLEAR_ERROR, LOGIN_FAILED, LOGIN_STARTED, LOGIN_SUCCESS } from '../actions/login';
+import { LOGIN_CLEAR_STATUS, LOGIN_FAILED, LOGIN_STARTED, LOGIN_SUCCESS } from '../actions/login';
 
 const initialState = {
   inProgress: false,
@@ -23,11 +23,8 @@ const reducer = (state = initialState, action) => {
         error: null
       };
     }
-    case LOGIN_CLEAR_ERROR: {
-      return {
-        ...state,
-        error: null
-      };
+    case LOGIN_CLEAR_STATUS: {
+      return initialState;
     }
     case LOGIN_FAILED: {
       const { error } = payload;

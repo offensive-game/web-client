@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { compact, get } from 'lodash';
-import { Redirect } from 'react-router-dom';
 
 // Internal
 import Button from '../../../common/Button/Button';
@@ -22,23 +21,15 @@ class Login extends Component {
     password: ''
   };
 
-  inputChange = (event) => {
-    const name = get(event, 'target.name', '');
-    const value = get(event, 'target.value', '');
-
-    this.setState({ [name]: value });
-  };
-
-  componentDidUpdate = (prevProps) => {
+  componentDidUpdate(prevProps) {
     const { error, showErrorsModal } = this.props;
 
-    const previousError = prevProps.error && prevProps.error.length;
-    const currentError = error && error.length;
+    const showError = !prevProps.error && error;
 
-    if (!previousError && currentError) {
-      showErrorsModal(error);
+    if (showError) {
+      showErrorsModal([error]);
     }
-  };
+  }
 
   onSubmit = (event) => {
     event.preventDefault();
@@ -57,13 +48,16 @@ class Login extends Component {
     login(username, password);
   };
 
+  inputChange = (event) => {
+    const name = get(event, 'target.name', '');
+    const value = get(event, 'target.value', '');
+
+    this.setState({ [name]: value });
+  };
+
   render() {
     const { username, password } = this.state;
-    const { loggedIn } = this.props;
-
-    if (loggedIn) {
-      return <Redirect to="/" />;
-    }
+    const { clearErrors } = this.props;
 
     return (
       <form className={styles.component} onSubmit={this.onSubmit}>
@@ -82,7 +76,7 @@ class Login extends Component {
         <div className={styles.loginButton}>
           <Button text="Log In" type="submit" />
         </div>
-        <Modal component={ErrorPopup} name={INVALID_CREDENTIALS} />
+        <Modal component={ErrorPopup} name={INVALID_CREDENTIALS} closeAction={clearErrors} />
       </form>
     );
   }
@@ -93,9 +87,9 @@ Login.defaultProps = {
 };
 
 Login.propTypes = {
+  clearErrors: PropTypes.func.isRequired,
   error: PropTypes.string,
   login: PropTypes.func.isRequired,
-  loggedIn: PropTypes.bool.isRequired,
   showErrorsModal: PropTypes.func.isRequired
 };
 

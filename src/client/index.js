@@ -17,7 +17,7 @@ import ProtectedRoute from './routes/ProtectedRoute/Container';
 import rootReducer from './reducer/reducer';
 import routes from './routes/routes';
 
-const axiosInstance = axios.create({ baseURL: 'https://offensive.local/demo' });
+const axiosInstance = axios.create({ baseURL: 'https://offensive.local/demo', withCredentials: true });
 
 const store = createStore(
   rootReducer,

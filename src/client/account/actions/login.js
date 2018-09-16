@@ -1,9 +1,11 @@
-import { setCookie } from 'redux-cookie';
+// Vendor
+import { get } from 'lodash';
+import { storeCookie } from '../../actions/cookies';
 
 export const LOGIN_STARTED = 'LOGIN_STARTED';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_CLEAR_ERROR = 'LOGIN_CLEAR_ERROR';
+export const LOGIN_CLEAR_STATUS = 'LOGIN_CLEAR_STATUS';
 
 const loginStarted = (payload = {}) => ({
   type: LOGIN_STARTED,
@@ -20,22 +22,22 @@ const loginFailed = (payload = {}) => ({
   payload
 });
 
-const loginClearError = (payload = {}) => ({
-  type: LOGIN_CLEAR_ERROR,
+const loginClearStatus = (payload = {}) => ({
+  type: LOGIN_CLEAR_STATUS,
   payload
 });
 
-const loginAction = (username, password) => (dispatch, getState, server) => {
+const loginAction = (username, password) => async (dispatch, getState, api) => {
   dispatch(loginStarted());
 
-  server.post('login', { username, password }).then(
-    (aaaa) => {
-      console.log('login respose', aaaa);
-      dispatch(loginSuccess({ user: { name: 'adada ' } }));
-    }
-  ).catch((error) => {
-    console.log(error);
-  });
+  try {
+    const response = await api.post('login', { username, password });
+    dispatch(loginSuccess());
+    dispatch(storeCookie('offensive-login', response.data.token || 123));
+  } catch (error) {
+    const errorMessage = get(error, 'response.data.errors');
+    dispatch(loginFailed({ error: errorMessage }));
+  }
 };
 
-export { loginAction, loginClearError };
+export { loginAction, loginClearStatus };
