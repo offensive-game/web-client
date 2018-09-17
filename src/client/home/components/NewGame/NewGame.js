@@ -51,9 +51,6 @@ class NewGame extends Component {
 
   render() {
     const { name } = this.state;
-    const { success } = this.props;
-
-    if (success) return <Redirect to="game/111" push />;
 
     return (
       <form className={styles.component} onSubmit={this.onSubmit}>

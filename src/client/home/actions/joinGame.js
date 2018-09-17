@@ -1,29 +1,14 @@
+// Vendor
 import moment from 'moment';
-
-const games = [
-  {
-    id: '213',
-    name: 'aaa',
-    numberOfPlayers: 5,
-    startTime: moment().add(15, 'seconds')
-  },
-  {
-    id: '12',
-    name: 'bbbb',
-    numberOfPlayers: 5,
-    startTime: moment().add(60, 'seconds')
-  },
-  {
-    id: '1ew2',
-    name: 'bbdfasfasbb',
-    numberOfPlayers: 5,
-    startTime: moment().add(70, 'seconds')
-  }
-];
+import { get } from 'lodash';
+import { mapServerGameToClient } from '../helper';
 
 export const LOAD_GAMES_STARTED = 'LOAD_GAMES_STARTED';
 export const LOAD_GAMES_FAILED = 'LOAD_GAMES_FAILED';
 export const LOAD_GAMES_SUCCESS = 'LOAD_GAMES_SUCCESS';
+export const JOIN_GAME_STARTED = 'JOIN_GAME_STARTED';
+export const JOIN_GAME_FAILED = 'JOIN_GAME_FAILED';
+export const JOIN_GAME_SUCCESS = 'JOIN_GAME_SUCCESS';
 export const SELECT_GAME = 'SELECT_GAME';
 export const REMOVE_GAME = 'REMOVE_GAME';
 
@@ -52,13 +37,20 @@ const removeGameSuccess = (payload) => ({
   payload
 });
 
-const loadGames = () => (dispatch) => {
-  dispatch(loadGamesStarted());
+const joinGameStarted = (payload = {}) => ({
+  type: JOIN_GAME_STARTED,
+  payload
+});
 
-  setTimeout(() => {
-    dispatch(loadGamesSuccess(games));
-  }, 500);
-};
+const joinGameFailed = (payload = {}) => ({
+  type: JOIN_GAME_FAILED,
+  payload
+});
+
+const joinGameSuccess = (payload = {}) => ({
+  type: JOIN_GAME_SUCCESS,
+  payload
+});
 
 const selectGame = (id) => (dispatch) => {
   dispatch(selectGameSuccess(id));
@@ -68,8 +60,27 @@ const removeGame = (id) => (dispatch) => {
   dispatch(removeGameSuccess(id));
 };
 
-const joinGame = (id) => () => {
-  console.log('JOINING GAME');
+const loadGames = () => async (dispatch, getState, api) => {
+  dispatch(loadGamesStarted());
+
+  try {
+    const response = await api.get('/game');
+    const responseGames = get(response, 'data.games', []);
+    const games = responseGames.map((game) => mapServerGameToClient(game));
+    dispatch(loadGamesSuccess({ games }));
+  } catch (error) {
+    dispatch(loadGamesFailed(error.response.data));
+  }
+};
+
+const joinGame = (id) => async (dispatch, getState, api) => {
+  dispatch(joinGameStarted({ id }));
+  try {
+    const response = await api.get(`/game/${id}`);
+    dispatch(joinGameSuccess(response));
+  } catch (error) {
+    dispatch(joinGameFailed());
+  }
 };
 
 export { loadGames, selectGame, removeGame, joinGame };

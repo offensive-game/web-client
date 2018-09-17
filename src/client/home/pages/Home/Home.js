@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 
 // Internal
 import Hamburger from '../../../common/Hamburger/Hamburger';
+import { loadGames } from '../../actions/joinGame';
 import JoinGame from '../../components/JoinGame/Container';
 import NewGame from '../../components/NewGame/Container';
 
@@ -11,12 +12,8 @@ import NewGame from '../../components/NewGame/Container';
 import styles from './styles.css';
 
 class Home extends Component {
-  static serverFetch() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 1000);
-    });
+  static async serverFetch() {
+    await loadGames();
   }
 
   render() {

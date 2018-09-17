@@ -1,3 +1,5 @@
+import { mapServerGameToClient } from '../helper';
+
 export const CREATE_GAME_STARTED = 'CREATE_GAME_STARTED';
 export const CREATE_GAME_FAILED = 'CREATE_GAME_FAILED';
 export const CREATE_GAME_SUCCESS = 'CREATE_GAME_SUCCESS';
@@ -23,17 +25,17 @@ const createGameReset = (payload = {}) => ({
   payload
 });
 
-const createGame = (name, numberOfPlayers, deadline) => (dispatch) => {
+const createGame = (name, numberOfPlayers, deadline) => async (dispatch, getState, api) => {
   dispatch(createGameStarted());
 
-  setTimeout(() => {
-    if (name !== 'fail') {
-      dispatch(createGameSuccess({ name, numberOfPlayers, deadline }));
-      dispatch(createGameReset());
-    } else {
-      dispatch(createGameFailed());
-    }
-  }, 1000);
+  try {
+    const response = await api.post('/game', { name, number_of_players: numberOfPlayers, wait_time: deadline });
+    const game = mapServerGameToClient(response.data);
+    dispatch(createGameSuccess({ ...game }));
+    dispatch(createGameReset());
+  } catch (error) {
+    dispatch(createGameFailed());
+  }
 };
 
 export { createGame };

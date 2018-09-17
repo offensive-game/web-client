@@ -5,6 +5,7 @@ import {
   REMOVE_GAME,
   SELECT_GAME
 } from '../actions/joinGame';
+import { CREATE_GAME_SUCCESS } from '../actions/newGame';
 
 const initialState = {
   inProgress: false,
@@ -36,7 +37,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         inProgress: false,
         loaded: true,
-        games: payload
+        games: payload.games
       };
     }
     case SELECT_GAME: {
@@ -50,6 +51,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         games: state.games.filter((g) => g.id !== payload),
         selected: payload === state.selected ? null : state.selected
+      };
+    }
+    case CREATE_GAME_SUCCESS: {
+      return {
+        ...state,
+        games: [...state.games, payload]
       };
     }
     default: {
