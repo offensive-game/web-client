@@ -9,6 +9,7 @@ export const LOAD_GAMES_SUCCESS = 'LOAD_GAMES_SUCCESS';
 export const JOIN_GAME_STARTED = 'JOIN_GAME_STARTED';
 export const JOIN_GAME_FAILED = 'JOIN_GAME_FAILED';
 export const JOIN_GAME_SUCCESS = 'JOIN_GAME_SUCCESS';
+export const JOIN_GAME_CLEAR = 'JOIN_GAME_CLEAR';
 export const SELECT_GAME = 'SELECT_GAME';
 export const REMOVE_GAME = 'REMOVE_GAME';
 
@@ -52,6 +53,11 @@ const joinGameSuccess = (payload = {}) => ({
   payload
 });
 
+const joinGameClear = (payload = {}) => ({
+  type: JOIN_GAME_CLEAR,
+  payload
+});
+
 const selectGame = (id) => (dispatch) => {
   dispatch(selectGameSuccess(id));
 };
@@ -83,4 +89,8 @@ const joinGame = (id) => async (dispatch, getState, api) => {
   }
 };
 
-export { loadGames, selectGame, removeGame, joinGame };
+const clearJoinGame = () => (dispatch) => {
+  dispatch(joinGameClear());
+};
+
+export { loadGames, selectGame, removeGame, joinGame, clearJoinGame };

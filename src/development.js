@@ -14,7 +14,7 @@ const clientWPConfig = require('../config/webpack.dev.client');
 
 const options = {
   key: fs.readFileSync('./offensive.local.key'),
-  cert: fs.readFileSync('./offensive.local.cert'),
+  cert: fs.readFileSync('./offensive.local.crt'),
   requestCert: false,
   rejectUnauthorized: false
 };

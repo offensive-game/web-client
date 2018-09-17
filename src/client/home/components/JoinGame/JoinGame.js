@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 // Internal
+import ErrorPopup from '../../../modal/components/ErrorPopup/ErrorPopup';
 import GameInfo from './GameInfo/Container';
 import GameItem from './GameItem/GameItem';
+import Modal from '../../../modal/components/Container';
+
+// Constants
+import { JOIN_GAME_ERROR } from '../../../modal/constants';
 
 // CSS
 import styles from './styles.css';
@@ -14,6 +19,15 @@ class JoinGame extends Component {
     const { loaded, inProgress, loadGames } = this.props;
     if (!loaded && !inProgress) {
       loadGames();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { joinGameSuccess: oldSuccess, showErrorPopup } = prevProps;
+    const { joinGameSuccess } = this.props;
+
+    if (oldSuccess === null && joinGameSuccess === false) {
+      showErrorPopup();
     }
   }
 
@@ -28,9 +42,10 @@ class JoinGame extends Component {
   };
 
   render() {
-    const { games, selected } = this.props;
+    const { games, selected, clearJoinGame } = this.props;
     return (
       <div className={styles.component}>
+        <Modal component={ErrorPopup} name={JOIN_GAME_ERROR} closeAction={clearJoinGame} />
         <div className={styles.left}>
           <ul className={styles.list}>
             {games.map((game) => (
@@ -56,10 +71,12 @@ class JoinGame extends Component {
 
 JoinGame.defaultProps = {
   games: [],
+  joinGameSuccess: null,
   selected: null
 };
 
 JoinGame.propTypes = {
+  clearJoinGame: PropTypes.func.isRequired,
   games: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -68,11 +85,13 @@ JoinGame.propTypes = {
     })
   ),
   inProgress: PropTypes.bool.isRequired,
+  joinGameSuccess: PropTypes.bool,
   loaded: PropTypes.bool.isRequired,
   loadGames: PropTypes.func.isRequired,
-  selectGame: PropTypes.func.isRequired,
+  removeGame: PropTypes.func.isRequired,
   selected: PropTypes.string,
-  removeGame: PropTypes.func.isRequired
+  selectGame: PropTypes.func.isRequired,
+  showErrorPopup: PropTypes.func.isRequired
 };
 
 export default JoinGame;

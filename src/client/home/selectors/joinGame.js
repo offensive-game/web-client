@@ -17,10 +17,23 @@ const selectJoinableGameById = createSelector(
 );
 const selectSelectedGame = createSelector(selectJoinGame, (joinGame) => get(joinGame, 'selected'));
 
+const selectJoinGameJoining = createSelector(selectJoinGame, (joinGame) => get(joinGame, 'joining', {}));
+
+const selectJoinGameJoiningGameId = createSelector(selectJoinGameJoining, (joining) => get(joining, 'gameId'), null);
+const selectJoinGameJoiningInProgress = createSelector(
+  selectJoinGameJoining,
+  (joining) => get(joining, 'inProgress'),
+  null
+);
+const selectJoinGameJoiningSuccess = createSelector(selectJoinGameJoining, (joining) => get(joining, 'success', null));
+
 export {
-  selectJoinGameLoadingInProgress,
-  selectJoinGameLoaded,
-  selectJoinableGames,
   selectJoinableGameById,
+  selectJoinableGames,
+  selectJoinGameJoiningGameId,
+  selectJoinGameJoiningInProgress,
+  selectJoinGameJoiningSuccess,
+  selectJoinGameLoaded,
+  selectJoinGameLoadingInProgress,
   selectSelectedGame
 };

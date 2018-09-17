@@ -1,11 +1,14 @@
 // Vendor
 import { connect } from 'react-redux';
+import { showModal } from '../../../modal/actions';
+import { JOIN_GAME_ERROR } from '../../../modal/constants';
 
 // Internal
 import JoinGame from './JoinGame';
-import { loadGames, selectGame, removeGame } from '../../actions/joinGame';
+import { loadGames, selectGame, removeGame, clearJoinGame } from '../../actions/joinGame';
 import {
   selectJoinableGames,
+  selectJoinGameJoiningSuccess,
   selectJoinGameLoaded,
   selectJoinGameLoadingInProgress,
   selectSelectedGame
@@ -15,14 +18,27 @@ const mapStateToProps = (state) => ({
   inProgress: selectJoinGameLoadingInProgress(state),
   loaded: selectJoinGameLoaded(state),
   games: selectJoinableGames(state),
-  selected: selectSelectedGame(state)
+  selected: selectSelectedGame(state),
+  joinGameSuccess: selectJoinGameJoiningSuccess(state)
 });
 
-const mapDispatchToProps = {
-  loadGames,
-  selectGame,
-  removeGame
-};
+const mapDispatchToProps = (dispatch) => ({
+  loadGames() {
+    dispatch(loadGames());
+  },
+  selectGame(id) {
+    dispatch(selectGame(id));
+  },
+  removeGame(id) {
+    dispatch(removeGame(id));
+  },
+  clearJoinGame() {
+    dispatch(clearJoinGame());
+  },
+  showErrorPopup() {
+    dispatch(showModal(JOIN_GAME_ERROR, { errors: ['Unable to join game'] }));
+  }
+});
 
 export default connect(
   mapStateToProps,

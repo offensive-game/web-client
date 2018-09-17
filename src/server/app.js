@@ -21,7 +21,7 @@ import { loadCookies } from '../client/actions/cookies';
 const ssrHandler = () => (req, res) => {
   const cookies = new Cookies(req, res);
   const axiosInstance = axios.create({
-    baseURL: 'https://offensive.local/demo',
+    baseURL: '/demo',
     withCredentials: true
   });
   const store = createStore(

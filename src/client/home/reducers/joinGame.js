@@ -1,4 +1,7 @@
 import {
+  JOIN_GAME_FAILED,
+  JOIN_GAME_STARTED,
+  JOIN_GAME_SUCCESS,
   LOAD_GAMES_FAILED,
   LOAD_GAMES_STARTED,
   LOAD_GAMES_SUCCESS,
@@ -11,7 +14,12 @@ const initialState = {
   inProgress: false,
   loaded: false,
   games: [],
-  selected: null
+  selected: null,
+  joining: {
+    gameId: null,
+    joining: false,
+    success: null
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -57,6 +65,36 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         games: [...state.games, payload]
+      };
+    }
+    case JOIN_GAME_STARTED: {
+      return {
+        ...state,
+        joining: {
+          gameId: payload.id,
+          joining: true,
+          success: null
+        }
+      };
+    }
+    case JOIN_GAME_FAILED: {
+      return {
+        ...state,
+        joining: {
+          gameId: null,
+          joining: false,
+          success: false
+        }
+      };
+    }
+    case JOIN_GAME_SUCCESS: {
+      return {
+        ...state,
+        joining: {
+          gameId: payload.id,
+          joining: false,
+          success: true
+        }
       };
     }
     default: {
