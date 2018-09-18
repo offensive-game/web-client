@@ -1,19 +1,32 @@
 // Vendor
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 
 // Internal
 import Hamburger from '../../../common/Hamburger/Hamburger';
-import { loadGames } from '../../actions/joinGame';
 import JoinGame from '../../components/JoinGame/Container';
 import NewGame from '../../components/NewGame/Container';
+import { loadGames } from '../../actions/joinGame';
+import { loadUser } from '../../../actions/user';
 
 // CSS
 import styles from './styles.css';
 
 class Home extends Component {
-  static async serverFetch() {
-    await loadGames();
+  static async serverFetch(dispatch) {
+    return Promise.all([
+      dispatch(loadGames()),
+      dispatch(loadUser())
+    ]);
+  }
+
+  componentDidMount() {
+    const { loaded, inProgress, loadUserAction } = this.props;
+
+    if (!loaded && !inProgress) {
+      loadUserAction();
+    }
   }
 
   render() {
@@ -36,5 +49,11 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  inProgress: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
+  loadUserAction: PropTypes.func.isRequired
+};
 
 export default Home;

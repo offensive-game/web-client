@@ -1,4 +1,5 @@
 // Vendor
+import moment from 'moment';
 import { connect } from 'react-redux';
 
 // Internal
@@ -15,7 +16,7 @@ const mapStateToProps = (state) => {
 
   const name = selectedDetails && selectedDetails.name;
   const numberOfPlayers = selectedDetails && selectedDetails.numberOfPlayers;
-  const startTime = selectedDetails && selectedDetails.startTime;
+  const startTime = selectedDetails && moment(selectedDetails.startTime);
 
   return {
     id: selected,

@@ -1,4 +1,5 @@
 // Vendor
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { showModal } from '../../../modal/actions';
 import { JOIN_GAME_ERROR } from '../../../modal/constants';
@@ -14,13 +15,23 @@ import {
   selectSelectedGame
 } from '../../selectors/joinGame';
 
-const mapStateToProps = (state) => ({
-  inProgress: selectJoinGameLoadingInProgress(state),
-  loaded: selectJoinGameLoaded(state),
-  games: selectJoinableGames(state),
-  selected: selectSelectedGame(state),
-  joinGameSuccess: selectJoinGameJoiningSuccess(state)
-});
+const mapStateToProps = (state) => {
+  let games = selectJoinableGames(state);
+  if (games) {
+    games = games.map((game) => ({
+      ...game,
+      startTime: moment(game.startTime)
+    }));
+  }
+
+  return {
+    inProgress: selectJoinGameLoadingInProgress(state),
+    loaded: selectJoinGameLoaded(state),
+    games,
+    selected: selectSelectedGame(state),
+    joinGameSuccess: selectJoinGameJoiningSuccess(state)
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
   loadGames() {

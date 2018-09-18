@@ -2,6 +2,7 @@
 import 'regenerator-runtime/runtime';
 import axios from 'axios';
 import Cookies from 'cookies';
+import https from 'https';
 import React from 'react';
 import thunk from 'redux-thunk';
 import { applyMiddleware, createStore } from 'redux';
@@ -18,11 +19,16 @@ import routes from '../client/routes/routes';
 import template from './helpers/template';
 import { loadCookies } from '../client/actions/cookies';
 
+const wrapPromise = (promise) => new Promise((resolve) => promise.then(resolve).catch(resolve));
+
 const ssrHandler = () => (req, res) => {
   const cookies = new Cookies(req, res);
   const axiosInstance = axios.create({
-    baseURL: '/demo',
-    withCredentials: true
+    baseURL: 'https://offensive.local/demo',
+    withCredentials: true,
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false
+    })
   });
   const store = createStore(
     rootReducer,
@@ -32,10 +38,11 @@ const ssrHandler = () => (req, res) => {
   const context = {};
 
   const dataRequirements = routes
-    .filter((route) => matchPath(req.url, route))
+    .filter((route) => matchPath(req.path, route))
     .map((route) => route.component)
     .filter((comp) => comp.serverFetch)
-    .map((comp) => comp.serverFetch());
+    .map((comp) => comp.serverFetch(store.dispatch, store.getState))
+    .map(wrapPromise);
 
   Promise.all(dataRequirements).then(() => {
     const wrapped = (

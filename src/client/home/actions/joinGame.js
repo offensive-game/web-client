@@ -1,5 +1,4 @@
 // Vendor
-import moment from 'moment';
 import { get } from 'lodash';
 import { mapServerGameToClient } from '../helper';
 

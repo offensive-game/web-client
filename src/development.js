@@ -1,5 +1,6 @@
 // Vendor
 const cookieParser = require('cookie-parser');
+const path = require('path');
 const express = require('express');
 const fs = require('fs');
 const https = require('https');
@@ -21,6 +22,8 @@ const options = {
 
 const compiler = webpack([clientWPConfig, serverWPConfig]);
 const app = express();
+
+app.use(express.static(path.resolve(__dirname, '../public')));
 
 const server = https.createServer(options, app);
 
