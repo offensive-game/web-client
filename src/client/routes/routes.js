@@ -1,3 +1,4 @@
+import Game from '../game/pages/Game/Container';
 import Home from '../home/pages/Home/Container';
 import Account from '../account/pages/Account/Container';
 
@@ -14,6 +15,12 @@ const routes = [
     component: Account,
     exact: true,
     key: 'signup'
+  },
+  {
+    path: '/game/:id',
+    component: Game,
+    exact: true,
+    key: 'game'
   }
 ];
 
