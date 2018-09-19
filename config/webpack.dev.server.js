@@ -13,7 +13,8 @@ module.exports = {
   output: {
     filename: 'server.bundle.js',
     path: path.resolve(__dirname, '../dist'),
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
+    publicPath: '/'
   },
   devtool: 'source-map',
   module: {

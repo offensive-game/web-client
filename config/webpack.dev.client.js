@@ -10,7 +10,8 @@ module.exports = {
   mode: 'development',
   output: {
     filename: 'client.bundle.js',
-    path: path.resolve(__dirname, '/')
+    path: path.resolve(__dirname, '/'),
+    publicPath: '/'
   },
   devtool: 'source-map',
   module: {

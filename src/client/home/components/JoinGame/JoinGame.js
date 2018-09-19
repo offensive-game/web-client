@@ -1,6 +1,7 @@
 // Vendor
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 // Internal
 import ErrorPopup from '../../../modal/components/ErrorPopup/ErrorPopup';
@@ -42,7 +43,12 @@ class JoinGame extends Component {
   };
 
   render() {
-    const { games, selected, clearJoinGame } = this.props;
+    const { games, selected, clearJoinGame, joinGameSuccess } = this.props;
+
+    if (joinGameSuccess && selected) {
+      return <Redirect to={`/game/${selected}`} />;
+    }
+
     return (
       <div className={styles.component}>
         <Modal component={ErrorPopup} name={JOIN_GAME_ERROR} closeAction={clearJoinGame} />
