@@ -1,5 +1,13 @@
+// Vendor
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Board from '../../components/Board/Board';
+
+// Internal
+import Status from '../../components/Status/Status';
+
+// CSS
+import styles from './styles.css';
 
 class Game extends Component {
   componentDidMount() {
@@ -8,11 +16,16 @@ class Game extends Component {
   }
 
   render() {
-    return <div>Game Screen</div>;
+    return (
+      <div className={styles.component}>
+        <Status />
+        <Board />
+      </div>
+    );
   }
 }
 
-PropTypes.propTypes = {
+Game.propTypes = {
   openConnection: PropTypes.func.isRequired
 };
 
