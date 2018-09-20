@@ -7,7 +7,7 @@ import styles from './styles.css';
 
 class Board extends Component {
   render() {
-    return <div className={styles.component}>Board</div>;
+    return <div className={styles.component} />;
   }
 }
 

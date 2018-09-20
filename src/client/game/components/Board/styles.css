@@ -1,6 +1,17 @@
+@import "../../../styles.css";
+
 .component {
   background-color: mediumaquamarine;
-  display: inline;
-  width: 80%;
+  position: absolute;
+  width: calc(100% - 250px);
   height: 100%;
+  top: 0;
+  left: 250px;
+}
+
+@media (--tablet) {
+  .component {
+    left: 0;
+    width: 100%;
+  }
 }

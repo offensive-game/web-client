@@ -53,9 +53,10 @@
 
 .application {
   background: url("../../public/images/background.jpg");
-  margin: 100px auto;
   height: 720px;
+  margin: 100px auto;
   max-width: 1280px;
+  position: relative;
   width: 100%;
 }
 

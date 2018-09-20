@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Board from '../../components/Board/Board';
 
 // Internal
-import Status from '../../components/Status/Status';
+import Status from '../../components/Status/Container';
 
 // CSS
 import styles from './styles.css';
@@ -18,8 +18,8 @@ class Game extends Component {
   render() {
     return (
       <div className={styles.component}>
-        <Status />
         <Board />
+        <Status />
       </div>
     );
   }

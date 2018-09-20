@@ -1,5 +1,18 @@
+@import "../../../styles.css";
+
 .component {
   height: 100%;
-  width: 20%;
+  position: absolute;
   background-color: var(--color-silver-semi-transparent);
+  transition: width .3s ease-out;
 }
+
+.closed {
+  width: var(--size-36);
+}
+
+.expanded {
+  width: 250px;
+}
+
+
