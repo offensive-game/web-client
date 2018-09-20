@@ -5,11 +5,14 @@ import Cookies from 'cookies';
 import https from 'https';
 import React from 'react';
 import thunk from 'redux-thunk';
+import uaParser from 'ua-parser-js';
 import { applyMiddleware, createStore } from 'redux';
 import { createCookieMiddleware } from 'redux-cookie';
+import { get } from 'lodash';
 import { matchPath, Route, StaticRouter, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
+import { storeBrowserInfo } from '../client/actions/user';
 
 // Internal
 import Application from '../client/Application';
@@ -35,6 +38,17 @@ const ssrHandler = () => (req, res) => {
     applyMiddleware(thunk.withExtraArgument(axiosInstance), createCookieMiddleware(cookies))
   );
   store.dispatch(loadCookies(req.cookies));
+
+  const deviceType = get(uaParser(req.headers['user-agent']), 'device.type', 'desktop');
+  store.dispatch(
+    storeBrowserInfo({
+      desktop: deviceType === 'desktop',
+      mobile: deviceType === 'mobile' || deviceType === 'tablet',
+      phone: deviceType === 'mobile',
+      tablet: deviceType === 'tablet',
+      userAgent: req.headers['user-agent']
+    })
+  );
   const context = {};
 
   const dataRequirements = routes

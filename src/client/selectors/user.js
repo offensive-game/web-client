@@ -10,10 +10,20 @@ const selectIsLoaded = createSelector(selectUser, (user) => user.loaded);
 const selectId = createSelector(selectUser, (user) => user.id);
 const selectError = createSelector(selectUser, (user) => user.error);
 
+const selectBrowser = createSelector(selectUser, (user) => get(user, 'browser'), {});
+const selectIsMobile = createSelector(selectBrowser, (browser) => get(browser, 'mobile', false));
+const selectIsPhone = createSelector(selectBrowser, (browser) => get(browser, 'phone', false));
+const selectIsTablet = createSelector(selectBrowser, (browser) => get(browser, 'tablet', false));
+const selectIsDesktop = createSelector(selectBrowser, (browser) => get(browser, 'desktop', false));
+
 export {
   selectError,
   selectId,
   selectInProgress,
   selectIsLoaded,
-  selectUsername
+  selectIsMobile,
+  selectUsername,
+  selectIsDesktop,
+  selectIsPhone,
+  selectIsTablet
 };

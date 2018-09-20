@@ -1,12 +1,18 @@
 // Internal
-import { LOAD_USER_FAILED, LOAD_USER_STARTED, LOAD_USER_SUCCESS } from '../actions/user';
+import {
+  LOAD_USER_FAILED,
+  LOAD_USER_STARTED,
+  LOAD_USER_SUCCESS,
+  STORE_BROWSER_INFO
+} from '../actions/user';
 
 const initialState = {
   inProgress: false,
   loaded: false,
   error: null,
   username: null,
-  id: null
+  id: null,
+  browser: {}
 };
 
 const reducer = (state = initialState, action) => {
@@ -35,6 +41,13 @@ const reducer = (state = initialState, action) => {
         loaded: true,
         username,
         id
+      };
+    }
+
+    case STORE_BROWSER_INFO: {
+      return {
+        ...state,
+        browser: payload
       };
     }
 

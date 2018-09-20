@@ -5,6 +5,8 @@ export const LOAD_USER_STARTED = 'LOAD_USER_STARTED';
 export const LOAD_USER_FAILED = 'LOAD_USER_STARTED';
 export const LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
 
+export const STORE_BROWSER_INFO = 'STORE_BROWSER_INFO';
+
 const loadUserStarted = (payload = {}) => ({
   type: LOAD_USER_STARTED,
   payload
@@ -20,6 +22,11 @@ const loadUserSuccess = (payload = {}) => ({
   payload
 });
 
+const storeBrowserInfoSuccess = (payload = {}) => ({
+  type: STORE_BROWSER_INFO,
+  payload
+});
+
 const loadUser = () => async (dispatch, getState, api) => {
   dispatch(loadUserStarted());
 
@@ -32,4 +39,8 @@ const loadUser = () => async (dispatch, getState, api) => {
   }
 };
 
-export { loadUser };
+const storeBrowserInfo = (info) => async (dispatch) => {
+  dispatch(storeBrowserInfoSuccess(info));
+};
+
+export { loadUser, storeBrowserInfo };
