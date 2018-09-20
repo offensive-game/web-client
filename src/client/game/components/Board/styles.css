@@ -1,7 +1,7 @@
 @import "../../../styles.css";
 
 .component {
-  background-color: mediumaquamarine;
+  background: url("../../../../../public/images/wave.gif") repeat center;
   position: absolute;
   width: calc(100% - 250px);
   height: 100%;
