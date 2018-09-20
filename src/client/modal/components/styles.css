@@ -81,3 +81,17 @@
   position: absolute;
   width: 100%;
 }
+
+@media (--phone) {
+  .small {
+    width: 95vw;
+  }
+
+  .medium {
+    width: 95vw;
+  }
+
+  .large {
+    width: 95vw;
+  }
+}

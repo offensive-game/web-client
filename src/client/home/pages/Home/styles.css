@@ -1,3 +1,5 @@
+@import '../../../styles.css';
+
 .gameName {
   background: url("../../../../../public/images/name.png") no-repeat center;
   height: 100px;
@@ -9,4 +11,14 @@
 
 .hamburger {
   margin: var(--size-8) auto;
+}
+
+@media (--tablet) {
+  .gameName {
+    background: url("../../../../../public/images/mobile-name.png") no-repeat center;
+    height: 150px;
+    padding-top: var(--size-40);
+    margin: 0 var(--size-20);
+    background-size: contain;
+  }
 }

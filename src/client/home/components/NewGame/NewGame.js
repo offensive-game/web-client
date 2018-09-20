@@ -55,34 +55,29 @@ class NewGame extends Component {
     return (
       <form className={styles.component} onSubmit={this.onSubmit}>
         <div className={styles.wrapper}>
-          <div className={styles.label}>Game Name:</div>
-          <div className={styles.input}>
-            <input type="text" value={name} onChange={this.updateName} name="gameName" />
-          </div>
+          <div>Game Name:</div>
+          <input className={styles.inputElement} type="text" value={name} onChange={this.updateName} name="gameName" />
         </div>
 
         <div className={styles.wrapper}>
-          <div className={styles.label}>Number of Players:</div>
-          <div className={styles.input}>
-            <select onChange={this.updateNumberOfPlayers} defaultValue="2">
-              <option value="2">2</option>
-              <option value="3">4</option>
-              <option value="4">5</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
+          <div>Players:</div>
+          <select className={styles.inputElement} onChange={this.updateNumberOfPlayers} defaultValue="2">
+            <option value="2">2</option>
+            <option value="3">4</option>
+            <option value="4">5</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
         </div>
 
         <div className={styles.wrapper}>
-          <div className={styles.label}>Game Start:</div>
-          <div className={styles.input}>
-            <select onChange={this.updateDeadline} defaultValue="30">
-              <option value="30">30 seconds after creation</option>
-              <option value="60">1 minute after creation</option>
-              <option value="120">2 minutes after creation</option>
-            </select>
-          </div>
+          <div>Game Start:</div>
+          <select className={styles.inputElement} onChange={this.updateDeadline} defaultValue="30">
+            <option value="30">30 seconds after creation</option>
+            <option value="60">1 minute after creation</option>
+            <option value="120">2 minutes after creation</option>
+            <option value="1200">20 minutes after creation</option>
+          </select>
         </div>
 
         <Button text="Create & Join" type="submit" className={styles.button} />

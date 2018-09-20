@@ -25,18 +25,30 @@
   --color-black-transparent: rgba(0, 0, 0, .3);
 
   --font-weight-bold: 600;
+
+  @custom-media --phone (width <= 375px);
+  @custom-media --tablet (width <= 768px);
+
+  @custom-media --retina (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi);
+  @custom-media --landscape (orientation: landscape);
+  @custom-media --portrait (orientation: portrait);
 }
 
 :global(body) {
   background-color: black;
   color: var(--color-silver);
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  font-size: var(--size-16);
 }
 
 :global(#app) {
-  height: 100%;
+  height: 100vh;
   min-height: 700px;
-  width: 100%;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .application {
@@ -45,4 +57,12 @@
   height: 720px;
   max-width: 1280px;
   width: 100%;
+}
+
+@media (--tablet) {
+  .application {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+  }
 }

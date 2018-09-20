@@ -8,6 +8,7 @@ const htmlTemplate = (reactDom, reduxState) => {
     <html>
         <head>
             <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Offensive Game</title>
             <link rel="stylesheet" type="text/css" href="/main.css">
             <link rel="icon" href="favicon.ico" type="image/x-icon"/>

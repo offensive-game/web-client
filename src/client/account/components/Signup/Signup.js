@@ -64,22 +64,16 @@ class Signup extends Component {
     return (
       <form className={styles.component} onSubmit={this.onSubmit}>
         <div className={styles.wrapper}>
-          <div className={styles.label}>E-Mail address:</div>
-          <div className={styles.input}>
-            <input type="text" value={email} onChange={this.inputChange} name="email" />
-          </div>
+          <div>E-Mail address:</div>
+          <input type="text" value={email} onChange={this.inputChange} name="email" />
         </div>
         <div className={styles.wrapper}>
-          <div className={styles.label}>Username:</div>
-          <div className={styles.input}>
-            <input type="text" value={username} onChange={this.inputChange} name="username" />
-          </div>
+          <div>Username:</div>
+          <input type="text" value={username} onChange={this.inputChange} name="username" />
         </div>
         <div className={styles.wrapper}>
-          <div className={styles.label}>Password:</div>
-          <div className={styles.input}>
-            <input type="password" value={password} onChange={this.inputChange} name="password" />
-          </div>
+          <div>Password:</div>
+          <input type="password" value={password} onChange={this.inputChange} name="password" />
         </div>
         <div className={styles.signupButton}>
           <Button text="Sign Up" type="submit" />
