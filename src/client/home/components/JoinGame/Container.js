@@ -1,15 +1,12 @@
 // Vendor
 import moment from 'moment';
 import { connect } from 'react-redux';
-import { showModal } from '../../../modal/actions';
-import { JOIN_GAME_ERROR } from '../../../modal/constants';
 
 // Internal
 import JoinGame from './JoinGame';
-import { loadGames, selectGame, removeGame, clearJoinGame } from '../../actions/joinGame';
+import { loadGames, selectGame, removeGame } from '../../actions/joinGame';
 import {
   selectJoinableGames,
-  selectJoinGameJoiningSuccess,
   selectJoinGameLoaded,
   selectJoinGameLoadingInProgress,
   selectSelectedGame
@@ -28,8 +25,7 @@ const mapStateToProps = (state) => {
     inProgress: selectJoinGameLoadingInProgress(state),
     loaded: selectJoinGameLoaded(state),
     games,
-    selected: selectSelectedGame(state),
-    joinGameSuccess: selectJoinGameJoiningSuccess(state)
+    selected: selectSelectedGame(state)
   };
 };
 
@@ -42,12 +38,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   removeGame(id) {
     dispatch(removeGame(id));
-  },
-  clearJoinGame() {
-    dispatch(clearJoinGame());
-  },
-  showErrorPopup() {
-    dispatch(showModal(JOIN_GAME_ERROR, { errors: ['Unable to join game'] }));
   }
 });
 

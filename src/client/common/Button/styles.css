@@ -20,3 +20,7 @@
 .secondary {
   color: white;
 }
+
+.linkButton {
+  display: block;
+}

@@ -1,12 +1,15 @@
 // Vendor
 import { connect } from 'react-redux';
-import { CREATE_GAME_ERROR } from '../../../modal/constants';
+import { withRouter } from 'react-router-dom';
 
 // Internal
 import NewGame from './NewGame';
 import { createGame } from '../../actions/newGame';
 import { selectNewGameData, selectNewGameInProgress, selectNewGameSuccess } from '../../selectors/newGame';
 import { showModal } from '../../../modal/actions';
+
+// Constants
+import { CREATE_GAME_ERROR } from '../../../modal/constants';
 
 const mapStateToProps = (state) => ({
   inProgress: selectNewGameInProgress(state),
@@ -35,8 +38,9 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
   };
 };
 
-export default connect(
+const ConnectedComponent = connect(
   mapStateToProps,
   mapDispatchToProps,
   mergeProps
 )(NewGame);
+export default withRouter(ConnectedComponent);

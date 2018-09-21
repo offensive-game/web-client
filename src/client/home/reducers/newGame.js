@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   inProgress: false,
-  success: false,
+  success: null,
   game: {}
 };
 
@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         inProgress: true,
-        success: false
+        success: null
       };
     }
     case CREATE_GAME_SUCCESS: {

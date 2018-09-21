@@ -22,8 +22,7 @@ const selectJoinGameJoining = createSelector(selectJoinGame, (joinGame) => get(j
 const selectJoinGameJoiningGameId = createSelector(selectJoinGameJoining, (joining) => get(joining, 'gameId'), null);
 const selectJoinGameJoiningInProgress = createSelector(
   selectJoinGameJoining,
-  (joining) => get(joining, 'inProgress'),
-  null
+  (joining) => get(joining, 'inProgress', null) // eslint-disable-line
 );
 const selectJoinGameJoiningSuccess = createSelector(selectJoinGameJoining, (joining) => get(joining, 'success', null));
 

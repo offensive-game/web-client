@@ -2,16 +2,17 @@
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 
 // Internal
 import Button from '../../../common/Button/Button';
 import Modal from '../../../modal/components/Container';
 import ErrorPopup from '../../../modal/components/ErrorPopup/ErrorPopup';
-import { CREATE_GAME_ERROR } from '../../../modal/constants';
 
 // CSS
 import styles from './styles.css';
+
+// Constants
+import { CREATE_GAME_ERROR } from '../../../modal/constants';
 
 class NewGame extends Component {
   state = {
@@ -19,6 +20,16 @@ class NewGame extends Component {
     numberOfPlayers: 2,
     deadline: 30
   };
+
+  componentDidUpdate(prevProps) {
+    const { success: oldSuccess } = prevProps;
+    const { success: newSuccess } = this.props;
+    const { history, game } = this.props;
+
+    if (oldSuccess === null && newSuccess === true) {
+      history.push(`/game/${game.id}`);
+    }
+  }
 
   updateName = (event) => {
     const name = event.target.value;
@@ -88,10 +99,17 @@ class NewGame extends Component {
   }
 }
 
+NewGame.defaultProps = {
+  game: null,
+  success: null
+};
+
 NewGame.propTypes = {
   create: PropTypes.func.isRequired,
+  game: PropTypes.object,
+  history: PropTypes.object.isRequired,
   showErrorModal: PropTypes.func.isRequired,
-  success: PropTypes.bool.isRequired
+  success: PropTypes.bool
 };
 
 export default NewGame;

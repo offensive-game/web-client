@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 // Internal
 import GameInfo from './GameInfo';
-import { joinGame } from '../../../actions/joinGame';
 import { selectJoinableGameById, selectSelectedGame } from '../../../selectors/joinGame';
 
 const mapStateToProps = (state) => {
@@ -23,8 +22,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {
-  joinGame
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(GameInfo);
+export default connect(mapStateToProps)(GameInfo);
