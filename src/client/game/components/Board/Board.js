@@ -45,11 +45,31 @@ import Yakutsk from '../Lands/Yakutsk';
 // CSS
 import styles from './styles.css';
 
+// Constants
+import { BOARD_INITIAL_HEIGHT, BOARD_INITIAL_WIDTH } from './constants';
+
 class Board extends Component {
+  boardRef = React.createRef();
+
+  state = { scale: 1 };
+
+  componentDidMount() {
+    const board = this.boardRef.current;
+    const scaleX = board.offsetWidth / BOARD_INITIAL_WIDTH;
+    const scaleY = board.offsetHeight / BOARD_INITIAL_HEIGHT;
+    const scale = Math.min(scaleX, scaleY);
+    if (scale > 1) {
+      this.setState({ scale: Math.max(1, scale) });
+    }
+  }
+
   render() {
+    const { scale } = this.state;
+    const style = { transform: `scale(${scale})` };
+
     return (
-      <div className={styles.component}>
-        <svg className={styles.lands}>
+      <div className={styles.component} ref={this.boardRef}>
+        <svg className={styles.lands} style={style}>
           <Argentina onClick={() => console.log('arg')} />
           <Brazil onClick={console.log} />
           <Peru onClick={console.log} />
