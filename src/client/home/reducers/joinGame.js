@@ -91,7 +91,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         joining: {
-          gameId: payload.id,
+          gameId: payload.game_id,
           joining: false,
           success: true
         }

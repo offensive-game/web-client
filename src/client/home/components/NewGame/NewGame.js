@@ -55,8 +55,6 @@ class NewGame extends Component {
       return;
     }
 
-    const gameStart = moment();
-    gameStart.add(deadline, 'seconds');
     create(name, numberOfPlayers, deadline);
   };
 

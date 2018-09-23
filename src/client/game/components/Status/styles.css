@@ -1,9 +1,10 @@
 @import "../../../styles.css";
 
 .component {
-  height: 100%;
-  position: absolute;
   background-color: var(--color-silver-semi-transparent);
+  height: 100%;
+  padding: var(--size-12);
+  position: absolute;
   transition: width .3s ease-out;
 }
 

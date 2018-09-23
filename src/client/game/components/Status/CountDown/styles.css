@@ -1,0 +1,31 @@
+.component {
+  margin-top: var(--size-16);
+  text-align: center;
+}
+
+.header {
+  width: 100%;
+  font-size: var(--font-20);
+}
+
+.remaining {
+  font-size: var(--font-36);
+}
+
+.remainingRegular {
+  color: var(--color-sunglow);
+}
+
+.remainingEnding {
+  color: red;
+  animation: blink 1s ease-in-out infinite;
+}
+
+.disabled {
+  color: var(--color-grey);
+}
+
+@keyframes blink {
+  from { opacity: .2; color: white }
+  to { opacity: 1; color: red }
+}

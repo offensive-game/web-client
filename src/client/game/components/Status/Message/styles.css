@@ -1,0 +1,5 @@
+.component {
+  color: var(--color-sunglow);
+  font-size: var(--font-15);
+  text-align: center;
+}

@@ -13,12 +13,28 @@
   --size-48: 48px;
   --size-52: 52px;
 
+  --font-12: 12px;
+  --font-13: 13px;
+  --font-14: 14px;
+  --font-15: 15px;
+  --font-16: 16px;
+  --font-17: 17px;
+  --font-18: 18px;
+  --font-19: 19px;
+  --font-20: 20px;
+  --font-22: 22px;
+  --font-25: 25px;
+  --font-36: 36px;
+  --font-48: 48px;
+  --font-72: 72px;
+
   --color-black: rgba(0, 0, 0, 1);
   --color-silver: rgba(202, 205, 201, 1);
   --color-gunmetal: rgba(34, 51, 59, 1);
   --color-sunglow: rgba(255, 210, 63, 1);
   --color-rifle-green: rgba(63, 75, 59, 1);
   --color-jungle-green: rgba(31, 63, 47, 1);
+  --color-grey: rgba(211, 211, 211, 1);
 
   --color-silver-transparent: rgba(202, 205, 201, .3);
   --color-silver-semi-transparent: rgba(202, 205, 201, .6);
@@ -40,6 +56,10 @@
   font-family: 'Roboto', sans-serif;
   margin: 0;
   font-size: var(--size-16);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 :global(#app) {

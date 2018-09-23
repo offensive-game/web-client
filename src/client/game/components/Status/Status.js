@@ -3,6 +3,10 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
+// Internal
+import CountDown from './CountDown/Container';
+import Message from './Message/Container';
+
 // CSS
 import styles from './styles.css';
 
@@ -25,7 +29,13 @@ class Status extends Component {
       [styles.closed]: !opened
     });
 
-    return <div className={classes}>{mobile && <button onClick={this.expand}>E</button>}</div>;
+    return (
+      <div className={classes}>
+        {mobile && <button onClick={this.expand}>E</button>}
+        <Message />
+        <CountDown />
+      </div>
+    );
   }
 }
 

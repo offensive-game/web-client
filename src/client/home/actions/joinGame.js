@@ -82,7 +82,7 @@ const joinGame = (id) => async (dispatch, getState, api) => {
   dispatch(joinGameStarted({ id }));
   try {
     const response = await api.get(`/game/${id}`);
-    dispatch(joinGameSuccess(response));
+    dispatch(joinGameSuccess(response.data));
   } catch (error) {
     dispatch(joinGameFailed());
   }
