@@ -8,6 +8,11 @@
   transition: width .3s ease-out;
 }
 
+.surrender {
+  position: relative;
+  bottom: 0;
+}
+
 .closed {
   width: var(--size-36);
 }

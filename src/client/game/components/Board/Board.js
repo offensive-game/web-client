@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 // Internal
 import * as LANDS from '../Land/constants/lands';
-import Land from '../Land/Land';
+import Land from '../Land/Container';
 
 // CSS
 import styles from './styles.css';

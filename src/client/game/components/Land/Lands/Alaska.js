@@ -16,7 +16,7 @@ const Alaska = (props) => {
 
 Alaska.propTypes = {
   onClick: PropTypes.func.isRequired,
-  color: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Alaska;

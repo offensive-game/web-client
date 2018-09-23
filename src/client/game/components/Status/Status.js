@@ -2,6 +2,7 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Button from '../../../common/Button/Button';
 
 // Internal
 import CountDown from './CountDown/Container';
@@ -36,6 +37,8 @@ class Status extends Component {
         <Message />
         <CountDown />
         <PlayersList />
+        <Button text="Cards" />
+        <Button text="Surrender" className={styles.surrender} />
       </div>
     );
   }

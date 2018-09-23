@@ -1,0 +1,31 @@
+.colorGrey {
+  fill: var(--color-player-grey);
+}
+
+.colorGrey:hover {
+  fill: var(--color-player-red);
+}
+
+.colorRed {
+  fill: var(--color-player-red);
+}
+
+.colorGreen {
+  fill: var(--color-player-green);
+}
+
+.colorBlue {
+  fill: var(--color-player-blue);
+}
+
+.colorPurple {
+  fill: var(--color-player-purple);
+}
+
+.colorYellow {
+  fill: var(--color-player-yellow);
+}
+
+.colorBrown {
+  fill: var(--color-player-brown);
+}
