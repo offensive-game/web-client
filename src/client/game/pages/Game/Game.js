@@ -7,7 +7,7 @@ import ErrorPopup from '../../../modal/components/ErrorPopup/ErrorPopup';
 
 // Internal
 import Status from '../../components/Status/Container';
-import Board from '../../components/Board/Board';
+import Board from '../../components/Board/Container';
 
 // CSS
 import styles from './styles.css';

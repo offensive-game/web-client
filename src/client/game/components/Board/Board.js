@@ -1,9 +1,11 @@
 // Vendor
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 // Internal
 import * as LANDS from '../Land/constants/lands';
 import Land from '../Land/Container';
+import Loading from './Loading/Loading';
 
 // CSS
 import styles from './styles.css';
@@ -27,6 +29,7 @@ class Board extends Component {
   }
 
   render() {
+    const { loading } = this.props;
     const { scale } = this.state;
     const style = { transform: `scale(${scale})` };
 
@@ -38,11 +41,15 @@ class Board extends Component {
         <svg className={styles.lands} style={style}>
           {lands}
         </svg>
+
+        {loading && <Loading />}
       </div>
     );
   }
 }
 
-Board.propTypes = {};
+Board.propTypes = {
+  loading: PropTypes.bool.isRequired
+};
 
 export default Board;

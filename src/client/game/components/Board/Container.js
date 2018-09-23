@@ -1,16 +1,16 @@
 // Vendor
 import { connect } from 'react-redux';
+import { WAITING_TO_START } from '../../constants/rounds';
 
 // Internal
 import Board from './Board';
+import { selectRoundRound } from '../../selectors/round';
 
-const mapStateToProps = (state, ownProps) => {};
+const mapStateToProps = (state) => {
+  const round = selectRoundRound(state);
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  action() {}
-});
+  const loading = round === WAITING_TO_START;
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Board);
+  return { loading };
+};
+export default connect(mapStateToProps)(Board);
