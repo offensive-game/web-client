@@ -15,8 +15,8 @@ const Venezuela = (props) => {
 };
 
 Venezuela.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  onClick: PropTypes.func.isRequired
 };
 
 export default Venezuela;
