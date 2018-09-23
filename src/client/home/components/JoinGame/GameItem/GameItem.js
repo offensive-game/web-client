@@ -22,7 +22,7 @@ class GameItem extends Component {
   tick = () => {
     const { startTime, gameTimeout, id } = this.props;
 
-    const gameStarts = moment(startTime);
+    const gameStarts = moment.unix(startTime);
     const diff = Math.max(0, gameStarts.diff(moment(), 'seconds'));
 
     if (diff <= 0) {
@@ -64,7 +64,7 @@ GameItem.propTypes = {
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   selected: PropTypes.bool.isRequired,
-  startTime: PropTypes.object.isRequired,
+  startTime: PropTypes.number.isRequired,
   gameTimeout: PropTypes.func
 };
 

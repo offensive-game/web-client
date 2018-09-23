@@ -28,7 +28,6 @@ class CountDown extends Component {
     }
 
     const deadlineMoment = moment.unix(deadline);
-    console.log(deadlineMoment.format());
     const remaining = Math.max(0, deadlineMoment.diff(moment(), 'seconds'));
     this.setState({ remaining });
   };

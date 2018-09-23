@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 // Internal
 import CountDown from './CountDown/Container';
 import Message from './Message/Container';
+import PlayersList from './PlayersList/Container';
 
 // CSS
 import styles from './styles.css';
@@ -34,6 +35,7 @@ class Status extends Component {
         {mobile && <button onClick={this.expand}>E</button>}
         <Message />
         <CountDown />
+        <PlayersList />
       </div>
     );
   }

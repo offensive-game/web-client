@@ -1,5 +1,4 @@
 // Vendor
-import moment from 'moment';
 import { connect } from 'react-redux';
 
 // Internal
@@ -17,7 +16,7 @@ const mapStateToProps = (state) => {
   if (games) {
     games = games.map((game) => ({
       ...game,
-      startTime: moment(game.startTime)
+      startTime: game.startTime
     }));
   }
 

@@ -12,9 +12,11 @@ import styles from './styles.css';
 class JoinGame extends Component {
   componentDidMount() {
     const { loaded, inProgress, loadGames } = this.props;
-    if (!loaded && !inProgress) {
-      loadGames();
-    }
+    // if (!loaded && !inProgress) {
+    //   loadGames();
+    // }
+
+    loadGames();
   }
 
   onClick = (gameId) => {
@@ -66,7 +68,7 @@ JoinGame.propTypes = {
     PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
-      startTime: PropTypes.object
+      startTime: PropTypes.number
     })
   ),
   inProgress: PropTypes.bool.isRequired,

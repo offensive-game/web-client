@@ -42,6 +42,20 @@
 
   --font-weight-bold: 600;
 
+  --color-player-red: rgba(202, 52, 51, 1);
+  --color-player-red-dark: rgba(255, 36, 0, 1);
+  --color-player-green: rgba(0, 168, 107, 1);
+  --color-player-green-dark: rgba(11, 102, 35, 1);
+  --color-player-blue: rgba(16, 52, 166, 1);
+  --color-player-blue-dark: rgba(17, 30, 108, 1);
+  --color-player-yellow: rgba(252, 226, 5, 1);
+  --color-player-yellow-dark: rgba(255, 191, 0, 1);
+  --color-player-purple: rgba(175, 105, 238, 1);
+  --color-player-purple-dark: rgba(111, 45, 168, 1);
+  --color-player-brown: rgba(126, 72, 28, 1);
+  --color-player-brown-dark: rgba(98, 42, 15, 1);
+  --color-player-grey: rgba(130, 130, 130, 1);
+
   @custom-media --phone (width <= 375px);
   @custom-media --tablet (width <= 768px);
 

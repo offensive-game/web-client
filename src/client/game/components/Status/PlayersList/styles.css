@@ -1,0 +1,55 @@
+.component {
+  margin-top: var(--size-16);
+  padding: 0;
+  width: 100%;
+}
+
+.colorBox {
+  border: 2px solid var(--color-black);
+  border-radius: var(--size-8);
+  height: var(--size-24);
+  width: var(--size-24);
+}
+
+.list {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: var(--size-4) 0;
+  width: 100%;
+}
+
+.player {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.name {
+  margin-left: var(--size-8);
+}
+
+.colorRed {
+  background-color: var(--color-player-red);
+}
+
+.colorGreen {
+  background-color: var(--color-player-green);
+}
+
+.colorBlue {
+  background-color: var(--color-player-blue);
+}
+
+.colorYellow {
+  background-color: var(--color-player-yellow);
+}
+
+.colorPurple {
+  background-color: var(--color-player-purple);
+}
+
+.colorBrown {
+  background-color: var(--color-player-brown);
+}
