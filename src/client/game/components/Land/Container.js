@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   const player = selectLandPlayerId(state, name);
 
   if (player) {
-    const playerInfo = selectPlayerById(player);
+    const playerInfo = selectPlayerById(state, player);
     color = playerInfo.color;
   }
 

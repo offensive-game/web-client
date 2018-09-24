@@ -44,6 +44,11 @@ class Game extends Component {
     }
   }
 
+  componentWillUnmount() {
+    const { closeConnection } = this.props;
+    closeConnection();
+  }
+
   closeJoinErrorPopup() {
     const { clearJoiningError, history } = this.props;
     history.push('/');
@@ -69,6 +74,7 @@ Game.defaultProps = {
 
 Game.propTypes = {
   clearJoiningError: PropTypes.func.isRequired,
+  closeConnection: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   joinGame: PropTypes.func.isRequired,
   joinInProgress: PropTypes.bool,

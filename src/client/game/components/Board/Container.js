@@ -1,13 +1,13 @@
 // Vendor
 import { connect } from 'react-redux';
-import { WAITING_TO_START } from '../../constants/rounds';
+import { WAITING_TO_START } from '../../constants/phases';
 
 // Internal
 import Board from './Board';
-import { selectRoundRound } from '../../selectors/round';
+import { selectRoundPhase } from '../../selectors/round';
 
 const mapStateToProps = (state) => {
-  const round = selectRoundRound(state);
+  const round = selectRoundPhase(state);
 
   const loading = round === WAITING_TO_START;
 

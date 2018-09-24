@@ -6,6 +6,7 @@ export const LOGIN_STARTED = 'LOGIN_STARTED';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_CLEAR_STATUS = 'LOGIN_CLEAR_STATUS';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 const loginStarted = (payload = {}) => ({
   type: LOGIN_STARTED,
@@ -27,6 +28,11 @@ const loginClearStatus = (payload = {}) => ({
   payload
 });
 
+const logoutSuccess = (payload = {}) => ({
+  type: LOGOUT_SUCCESS,
+  payload
+});
+
 const loginAction = (username, password) => async (dispatch, getState, api) => {
   dispatch(loginStarted());
 
@@ -40,4 +46,9 @@ const loginAction = (username, password) => async (dispatch, getState, api) => {
   }
 };
 
-export { loginAction, loginClearStatus };
+const logoutAction = () => async (dispatch, getState, api) => {
+  await api.post('/signout');
+  dispatch(logoutSuccess());
+};
+
+export { loginAction, logoutAction, loginClearStatus };

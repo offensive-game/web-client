@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import Message from './Message';
 import { selectNumberOfPlayers } from '../../../selectors/general';
 import { selectPlayers } from '../../../selectors/player';
-import { selectRoundRound } from '../../../selectors/round';
+import { selectRoundPhase } from '../../../selectors/round';
 
 // Constants
-import { WAITING_TO_START } from '../../../constants/rounds';
+import { WAITING_TO_START } from '../../../constants/phases';
 
 const mapStateToProps = (state) => {
-  const round = selectRoundRound(state);
+  const round = selectRoundPhase(state);
   let text = '';
 
   if (round === WAITING_TO_START) {

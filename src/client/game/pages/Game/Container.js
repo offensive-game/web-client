@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 // Internal
 import Game from './Game';
 import { clearJoinGame, joinGame } from '../../../home/actions/joinGame';
-import { open } from '../../../home/actions/ws';
+import { close, open } from '../../../home/actions/ws';
 import { selectJoinGameJoiningInProgress, selectJoinGameJoiningSuccess } from '../../../home/selectors/joinGame';
 import { showModal } from '../../../modal/actions';
 
@@ -18,6 +18,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  closeConnection() {
+    dispatch(close());
+  },
   openConnection() {
     dispatch(open());
   },

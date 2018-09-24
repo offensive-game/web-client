@@ -1,7 +1,12 @@
+import { selectCookie } from '../../selectors/cookie';
+
 let socket = null;
 
-const open = () => (dispatch) => {
-  socket = new WebSocket('wss://offensive.local/demo/ws');
+const open = () => (dispatch, getState) => {
+  const state = getState();
+  const token = selectCookie(state, 'offensive-login');
+
+  socket = new WebSocket(`wss://offensive.local/demo/ws?token=${token}`);
 
   socket.onmessage = (event) => {
     dispatch(JSON.parse(event.data));

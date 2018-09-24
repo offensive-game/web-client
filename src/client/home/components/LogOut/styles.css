@@ -1,0 +1,8 @@
+.component {
+  color: var(--color-silver);
+  height: var(--size-36);
+  position: absolute;
+  right: var(--size-20);
+  top: var(--size-20);
+  width: var(--size-36);
+}

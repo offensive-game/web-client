@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet';
 // Internal
 import Hamburger from '../../../common/Hamburger/Hamburger';
 import JoinGame from '../../components/JoinGame/Container';
+import LogOut from '../../components/LogOut/Container';
 import NewGame from '../../components/NewGame/Container';
 import { loadGames } from '../../actions/joinGame';
 import { loadUser } from '../../../actions/user';
@@ -36,6 +37,7 @@ class Home extends Component {
           <title>Home</title>
         </Helmet>
         <div className={styles.gameName} />
+        <LogOut/>
         <div className={styles.content}>
           <Hamburger className={styles.hamburger} title="New Game">
             <NewGame />
