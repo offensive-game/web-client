@@ -17,7 +17,7 @@ import ProtectedRoute from './routes/ProtectedRoute/Container';
 import rootReducer from './reducer/reducer';
 import routes from './routes/routes';
 
-const axiosInstance = axios.create({ baseURL: '/demo', withCredentials: true });
+const axiosInstance = axios.create({ baseURL: '/api', withCredentials: true });
 
 const store = createStore(
   rootReducer,

@@ -27,7 +27,7 @@ const wrapPromise = (promise) => new Promise((resolve) => promise.then(resolve).
 const ssrHandler = () => (req, res) => {
   const cookies = new Cookies(req, res);
   const axiosInstance = axios.create({
-    baseURL: 'https://offensive.local/demo',
+    baseURL: 'https://offensive.local/api',
     withCredentials: true,
     httpsAgent: new https.Agent({
       rejectUnauthorized: false

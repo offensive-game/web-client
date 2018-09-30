@@ -6,7 +6,7 @@ const open = () => (dispatch, getState) => {
   const state = getState();
   const token = selectCookie(state, 'offensive-login');
 
-  socket = new WebSocket(`wss://offensive.local/demo/ws?token=${token}`);
+  socket = new WebSocket(`wss://offensive.local/api/ws?token=${token}`);
 
   socket.onmessage = (event) => {
     dispatch(JSON.parse(event.data));
