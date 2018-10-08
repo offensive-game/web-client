@@ -37,7 +37,7 @@ GameInfo.defaultProps = {
 };
 
 GameInfo.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   name: PropTypes.string,
   numberOfPlayers: PropTypes.number
 };

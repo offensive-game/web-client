@@ -66,7 +66,7 @@ JoinGame.defaultProps = {
 JoinGame.propTypes = {
   games: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       name: PropTypes.string,
       startTime: PropTypes.number
     })
@@ -75,7 +75,7 @@ JoinGame.propTypes = {
   loaded: PropTypes.bool.isRequired,
   loadGames: PropTypes.func.isRequired,
   removeGame: PropTypes.func.isRequired,
-  selected: PropTypes.string,
+  selected: PropTypes.number,
   selectGame: PropTypes.func.isRequired
 };
 

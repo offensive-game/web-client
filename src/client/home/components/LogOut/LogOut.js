@@ -8,7 +8,7 @@ import { logout } from 'react-icons-kit/iconic/logout';
 import styles from './styles.css';
 
 const LogOut = ({ logOut }) => (
-  <a onClick={logOut} className={styles.component} href="/">
+  <a onClick={logOut} className={styles.component} href="/account">
     <Icon size={24} icon={logout} />
   </a>
 );

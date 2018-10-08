@@ -5,6 +5,10 @@
   height: var(--size-28);
 }
 
+.component:hover {
+  background-color: var(--color--gunmetal-transparent)
+}
+
 .value {
   color: var(--color-sunglow);
 }

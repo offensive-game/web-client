@@ -16,10 +16,7 @@ import styles from './styles.css';
 
 class Home extends Component {
   static async serverFetch(dispatch) {
-    return Promise.all([
-      dispatch(loadGames()),
-      dispatch(loadUser())
-    ]);
+    return Promise.all([dispatch(loadGames()), dispatch(loadUser())]);
   }
 
   componentDidMount() {
@@ -37,7 +34,7 @@ class Home extends Component {
           <title>Home</title>
         </Helmet>
         <div className={styles.gameName} />
-        <LogOut/>
+        <LogOut />
         <div className={styles.content}>
           <Hamburger className={styles.hamburger} title="New Game">
             <NewGame />

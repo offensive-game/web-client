@@ -35,8 +35,9 @@
   --color-rifle-green: rgba(63, 75, 59, 1);
   --color-jungle-green: rgba(31, 63, 47, 1);
   --color-grey: rgba(211, 211, 211, 1);
-  --color-grey-transparent: rgba(211, 211, 211, .5);
 
+  --color-grey-transparent: rgba(211, 211, 211, .5);
+  --color--gunmetal-transparent: rgba(34, 51, 59, .5);
   --color-silver-transparent: rgba(202, 205, 201, .3);
   --color-silver-semi-transparent: rgba(202, 205, 201, .6);
   --color-black-transparent: rgba(0, 0, 0, .3);
