@@ -59,7 +59,6 @@ class JoinGame extends Component {
 
 JoinGame.defaultProps = {
   games: [],
-  joinGameSuccess: null,
   selected: null
 };
 

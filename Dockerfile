@@ -1,4 +1,4 @@
-FROM node:10.9-alpine
+FROM node:10.12-alpine
 MAINTAINER Djordje Vukovic
 
 WORKDIR /usr/src/app
