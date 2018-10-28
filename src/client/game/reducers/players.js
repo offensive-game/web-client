@@ -14,13 +14,12 @@ const reducer = (state = initialState, action) => {
       return get(payload, 'players', []);
     }
     case OPPONENT_JOINED_SUCCESS: {
-      const { player_id: id, name, color } = payload;
+      const { id, name, color } = payload;
       const alreadyJoined = !!state.filter((player) => player.id === id).length;
       if (alreadyJoined) {
         return state;
-      } else {
-        return [...state, { id, name, color }];
       }
+      return [...state, { id, name, color }];
     }
     default:
       return state;
