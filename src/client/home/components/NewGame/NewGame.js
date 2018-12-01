@@ -18,7 +18,7 @@ class NewGame extends Component {
   state = {
     name: '',
     numberOfPlayers: 2,
-    deadline: 30
+    deadline: 3
   };
 
   componentDidUpdate(prevProps) {
@@ -81,7 +81,8 @@ class NewGame extends Component {
 
         <div className={styles.wrapper}>
           <div>Game Start:</div>
-          <select className={styles.inputElement} onChange={this.updateDeadline} defaultValue="30">
+          <select className={styles.inputElement} onChange={this.updateDeadline} defaultValue="3">
+            <option value="3">3 seconds after creation</option>
             <option value="30">30 seconds after creation</option>
             <option value="60">1 minute after creation</option>
             <option value="120">2 minutes after creation</option>

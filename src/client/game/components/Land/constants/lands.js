@@ -1,4 +1,4 @@
-export const AFGHANISTAN = 'afghanistan';
+export const IRAQ = 'iraq';
 export const ALASKA = 'alaska';
 export const ALBERTA = 'alberta';
 export const ARABIA = 'arabia';

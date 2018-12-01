@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 // Internal
-import { getLandByName } from './helper';
+import uiData from './data';
 
 // CSS
 import styles from './styles.css';
@@ -17,7 +17,6 @@ class Land extends Component {
 
   render() {
     const { color, name } = this.props;
-    const LandComponent = getLandByName(name);
 
     const classes = classnames({
       [styles.colorGreen]: color === 'green',
@@ -29,7 +28,20 @@ class Land extends Component {
       [styles.colorGrey]: color === 'grey'
     });
 
-    return <LandComponent onClick={this.logName} className={classes} />;
+    const { d, text } = uiData[name];
+    const { x, y } = text;
+
+    const formattedName = name.replace(/_/g, ' ');
+
+    return (
+      <g>
+        <path id={name} onClick={this.logName} className={classes} d={d} />
+        <text className={styles.text} x={x} y={y}>
+          <tspan>{formattedName}</tspan>
+          <tspan>(11)</tspan>
+        </text>
+      </g>
+    );
   }
 }
 
